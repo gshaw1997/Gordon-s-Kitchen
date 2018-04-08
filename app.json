@@ -2,7 +2,7 @@
   "expo": {
     "sdkVersion": "26.0.0",
     "android": {
-      "package": "gordons-kitchen"
+      "package": "com.aplusgames.gordonskitchen"
     },
     "name": "GordonsKitchen",
     "slug": "gordonskitchen",
@@ -10,7 +10,8 @@
     "isDetached": true,
     "detach": {
       "scheme": "exp8a898ab04aa84d088a4f7ff58be65f49",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.4.0-sdk26.0.0-e63d9209-070c-4118-b06b-c60e82da0b66.tar.gz"
+      "androidExpoViewUrl":
+        "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.4.0-sdk26.0.0-e63d9209-070c-4118-b06b-c60e82da0b66.tar.gz"
     }
   }
 }
