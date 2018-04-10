@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation';
 // VIEWS
 import LoginScreen from './views/login/login';
 import HomeScreen from './views/home/home';
+import DishSelectScreen from './views/dish-select/dish-select';
 
 const RootStack = StackNavigator(
   {
@@ -13,6 +14,9 @@ const RootStack = StackNavigator(
     },
     Home: {
       screen: HomeScreen
+    },
+    DishSelect: {
+      screen: DishSelectScreen
     }
   },
   {
