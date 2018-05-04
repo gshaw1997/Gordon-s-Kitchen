@@ -34,7 +34,7 @@ export default class HomeScreen extends React.Component {
             }
             style={[styles.button, styles.buttonEasy]}
           >
-            <Text style={styles.buttonText}>Easy</Text>
+            <Text style={styles.buttonText}>EASY</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
             }
             style={[styles.button, styles.buttonMedium]}
           >
-            <Text style={styles.buttonText}>Medium</Text>
+            <Text style={styles.buttonText}>MEDIUM</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -52,7 +52,7 @@ export default class HomeScreen extends React.Component {
             }
             style={[styles.button, styles.buttonIntermediate]}
           >
-            <Text style={styles.buttonText}>Intermediate</Text>
+            <Text style={styles.buttonText}>INTERMEDIATE</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -60,7 +60,7 @@ export default class HomeScreen extends React.Component {
             }
             style={[styles.button, styles.buttonExpert]}
           >
-            <Text style={styles.buttonText}>Expert</Text>
+            <Text style={styles.buttonText}>EXPERT</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>

@@ -16,7 +16,7 @@ export default class DishSelectScreen extends React.Component {
         style={styles.container}
         source={require('../../assets/images/dish-select-bg.png')}
       >
-        <Text style={styles.title}>Choose a dish</Text>
+        <Text style={styles.title}>Choose a Dish</Text>
         <View style={styles.buttonWrapper}>
           <TouchableOpacity style={[styles.button, styles.button]}>
             <Text style={styles.buttonText}>Greek Pizza</Text>

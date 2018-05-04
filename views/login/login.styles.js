@@ -26,7 +26,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-evenly'
   },
   defaultText: {
-    color: '#FFF'
+    color: '#FFF',
+    fontFamily: 'caesar-dressing',
+    fontSize: 45
   },
   buttonText: {
     fontWeight: 'bold',
@@ -51,6 +53,7 @@ export const styles = StyleSheet.create({
   },
   company: {
     position: 'absolute',
-    bottom: 10
+    bottom: 10,
+    fontFamily: 'gloria-hallelujah'
   }
 });

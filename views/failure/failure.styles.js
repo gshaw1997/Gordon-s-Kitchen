@@ -7,20 +7,20 @@ export const styles = StyleSheet.create({
     //This view is divided into three boxes of two different sizes (box 1 and box 2).
     container: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     box1: {
         flex: .5,
         alignItems :'center',
-        justifyContent: 'space-around'
+        flexWrap: 'wrap',
     },
     box2: {
-        flex: .25
+        flex: .25,
     },
     brokenHeart: {
-        height: '70%',
-        width: '70%',
-        marginTop: 60
+        height: 300,
+        width: 300,
+        marginTop: 100
     },
     //Basic button styling
     button: {

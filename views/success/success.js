@@ -17,7 +17,7 @@ export default class SuccessScreen extends React.Component {
                 source={require('../../assets/images/pink-pixels.jpg')}
             >
                 <View style={styles.container}>
-                    <View style={styles.box2} >
+                    <View style={[styles.box2]} >
                         //TODO: INSERT DISH NAME HERE AFTER THE DATABASE HAS BEEN COMPLETED.
                         <Text style={styles.narrationText}> Many hours later, your dish is completed. </Text>
                         

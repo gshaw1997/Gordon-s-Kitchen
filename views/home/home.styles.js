@@ -21,7 +21,9 @@ export const styles = StyleSheet.create({
     paddingVertical: 20
   },
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 20
   },
   button: {
     justifyContent: 'center',
@@ -39,8 +41,10 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: 'bold',
-    fontSize: 18,
-    color: '#FFF'
+    fontSize: 30,
+    color: '#FFF',
+    fontFamily: 'kalam',
+    marginTop: 15
   },
   buttonEasy: {
     backgroundColor: '#78E08F'

@@ -10,10 +10,12 @@ export const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     box1: {
-        flex: .35
+        flex: .35,
+        flexWrap: 'wrap'
     },
     box2: {
-        flex: .325
+        flex: .325,
+        flexWrap: 'wrap'
     },
     //Styling for the chef Gordon image
     chefGordon: {

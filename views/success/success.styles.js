@@ -4,25 +4,25 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
-      //This view is divided into three boxes of two different sizes (box 1 and box 2).
+    //This view is divided into three boxes of two different sizes (box 1 and box 2).
     container: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     box1: {
         flex: .5,
         alignItems :'center',
-        justifyContent: 'space-around'
+        flexWrap: 'wrap'
     },
     box2: {
         flex: .25,
         alignItems:'center',
-        justifyContent: 'space-around'
+        flexWrap: 'wrap'
     },
     //Styling for surprised Gordon image
     surprisedGordon: {
-        height: '95%',
-        width: '95%',
+        height: 250,
+        width: 250,
         marginLeft:30,
         marginTop: 20
     },
