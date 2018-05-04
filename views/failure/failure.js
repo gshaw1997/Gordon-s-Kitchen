@@ -19,7 +19,7 @@ export default class FailureScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.box2} >
                         //TODO: INSERT INSULT HERE AFTER THE DATABASE HAS BEEN COMPLETED
-                        <Text style={styles.narrationText}> Your pizza is done. Gordon smiles. </Text>
+                        <Text style={styles.narrationText}> Your dish is done. Gordon smiles. </Text>
                         <Text style={styles.speakingText}> "You've got a great future in my industry . . . as my customer." </Text>
                     </View>
                     <View style={styles.box1}>

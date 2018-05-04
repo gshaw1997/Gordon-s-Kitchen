@@ -1,9 +1,13 @@
+/**
+*This is the stylesheet for the 'start' view
+**/
 import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
+    //This view is divided into three boxes of two different sizes (box 1 and box 2).
     container: {
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     box1: {
         flex: .35
@@ -11,12 +15,14 @@ export const styles = StyleSheet.create({
     box2: {
         flex: .325
     },
-    gordon: {
+    //Styling for the chef Gordon image
+    chefGordon: {
         height: '90%',
         width: '90%',
-        marginLeft:30,
+        marginLeft: 30,
         marginTop: 20
     },
+    //Basic button styling
     button: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -25,6 +31,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 15
     },
+    //Next button styling
     nextButton: {
         position: 'absolute',
         bottom: 30,
@@ -34,15 +41,17 @@ export const styles = StyleSheet.create({
         height: 75,
         width: 75
     },
+    //Quit button styling
     quitButton: {
         position: 'absolute',
         bottom: 30,
         left: 30
     },
-    quitButtonImage:{
+    quitButtonImage: {
         height: 90,
         width: 90
     },
+    //Text styling 
     narrationText: {
         fontFamily: 'gaegu',
         fontSize: 30,

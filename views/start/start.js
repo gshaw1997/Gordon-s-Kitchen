@@ -20,7 +20,7 @@ export default class StartScreen extends React.Component {
                     //Image of Gordon's face
                     <Image
                         resizeMode="contain"
-                        style={styles.gordon}
+                        style={styles.chefGordon}
                         source={require('../../assets/images/chef-gordon.png')}
                     />
                 </View>

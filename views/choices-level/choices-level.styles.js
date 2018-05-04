@@ -1,6 +1,10 @@
+/**
+*This is the stylesheet for the 'choices-level' view
+**/
 import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
+    // //This view is divided into three boxes of two different sizes.
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -18,15 +22,7 @@ export const styles = StyleSheet.create({
     buttonsBox: {
         flex: .20
     },
-    gordon: {
-        height: '80%',
-        width: '80%',
-        marginLeft: 40,
-        marginTop: 20
-    },
-    title: {
-        fontSize: 50
-    },
+    //Basic button styling
     button: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -35,6 +31,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 15
     },
+    //Styling for the ingredients
     ingredientsWrapper: {
         alignItems: 'center',
         height: 75,
@@ -44,6 +41,7 @@ export const styles = StyleSheet.create({
         width: 90,
         height: 90
     },
+    //Next button styling
     nextButton: {
         position: 'absolute',
         bottom: 30,
@@ -53,6 +51,7 @@ export const styles = StyleSheet.create({
         height: 75,
         width: 75
     },
+    //Quit button styling
     quitButton: {
         position: 'absolute',
         bottom: 30,
@@ -62,10 +61,14 @@ export const styles = StyleSheet.create({
         height: 90,
         width: 90
     },
+    //Text styling
     narrationText: {
         fontFamily: 'gaegu',
         fontSize: 30,
         textAlign: 'center',
         padding: 40
+    },
+    title: {
+        fontSize: 50
     }
 });

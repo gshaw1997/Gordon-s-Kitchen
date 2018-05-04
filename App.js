@@ -37,7 +37,7 @@ const RootStack = StackNavigator(
     }
   },
   {
-    initialRouteName: 'Success',
+    initialRouteName: 'ChoicesLevel',
     navigationOptions: {
       headerStyle: { height: 0 },
       headerLeft: null
