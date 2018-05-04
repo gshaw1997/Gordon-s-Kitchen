@@ -10,7 +10,7 @@ export default class LoginScreen extends React.Component {
           <Image
             resizeMode="contain"
             style={styles.gordon}
-            source={require('../../assets/images/gordon.png')}
+            source={require('../../assets/images/mad-gordon.png')}
           />
           <Text style={[styles.defaultText]}>Gordon's Kitchen</Text>
         </View>

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { Font } from 'expo';
 
 // VIEWS
 import LoginScreen from './views/login/login';
 import HomeScreen from './views/home/home';
 import DishSelectScreen from './views/dish-select/dish-select';
+import StartScreen from './views/start/start';
+import ChoicesLevelScreen from './views/choices-level/choices-level';
+import FailureScreen from './views/failure/failure';
+import SuccessScreen from './views/success/success';
 
 const RootStack = StackNavigator(
   {
@@ -17,10 +22,22 @@ const RootStack = StackNavigator(
     },
     DishSelect: {
       screen: DishSelectScreen
+    },
+    Start: {
+      screen: StartScreen
+    },
+    ChoicesLevel: {
+      screen: ChoicesLevelScreen
+    },
+    Failure:{
+      screen: FailureScreen
+    },
+    Success:{
+      screen: SuccessScreen
     }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Success',
     navigationOptions: {
       headerStyle: { height: 0 },
       headerLeft: null
@@ -29,7 +46,20 @@ const RootStack = StackNavigator(
 );
 
 export default class App extends React.Component {
+  state = {
+    fontLoaded: false,
+  };
+  async componentDidMount() {
+    await Font.loadAsync({
+      // Gaegu font
+      'gaegu': require('./assets/fonts/Gaegu/Gaegu-Regular.ttf'),
+      // Kirang Haerang font
+      'kirang-haerang': require('./assets/fonts/KirangHaerang/KirangHaerang-Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
+    if (!this.state.fontLoaded) return null;
     return <RootStack />;
   }
 }
