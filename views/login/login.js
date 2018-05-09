@@ -28,9 +28,10 @@ export default class LoginScreen extends React.Component {
                 return;
             }
 
-            await this
+            const user = await this
                 .authService
                 .login(this.state.username, this.state.password);
+                this.props.navigation.navigate('Home');
 
         } catch (e) {
             this.setState({errorMsg: e})
@@ -44,9 +45,10 @@ export default class LoginScreen extends React.Component {
                 return;
             }
 
-            await this
+            const user = await this
                 .authService
                 .register(this.state.username, this.state.password);
+                this.props.navigation.navigate('Home');
 
         } catch (e) {
             this.setState({errorMsg: e})

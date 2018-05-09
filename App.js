@@ -45,12 +45,9 @@ const RootStack = StackNavigator(
     }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     navigationOptions: {
-      headerStyle: {
-        height: 0
-      },
-      headerLeft: null
+      header: null
     }
   }
 );

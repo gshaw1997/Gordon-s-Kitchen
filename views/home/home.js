@@ -7,11 +7,25 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { styles } from './home.styles';
+import { AuthService } from '../login/auth.service';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    headerStyle: { height: 0 }
-  };
+  authService = new AuthService();
+   constructor(props) {
+     super(props);
+     this.state = {
+       user: null
+     }
+     
+   }
+  async componentDidMount(){
+    try{
+      const user = await this.authService.getUser();
+      this.setState({user})
+    }catch(e){
+      console.log(e)
+    }
+  }
   render() {
     return (
       <ImageBackground
@@ -30,7 +44,7 @@ export default class HomeScreen extends React.Component {
         <View style={styles.buttonWrapper}>
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('DishSelect', { level: 'easy' })
+              this.props.navigation.navigate('DishSelect', { level: 'easy', user: this.state.user })
             }
             style={[styles.button, styles.buttonEasy]}
           >
@@ -38,7 +52,7 @@ export default class HomeScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('DishSelect', { level: 'medium' })
+              this.props.navigation.navigate('DishSelect', { level: 'medium', user: this.state.user })
             }
             style={[styles.button, styles.buttonMedium]}
           >
@@ -56,7 +70,7 @@ export default class HomeScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('DishSelect', { level: 'expert' })
+              this.props.navigation.navigate('DishSelect', { level: 'expert', user: this.state.user })
             }
             style={[styles.button, styles.buttonExpert]}
           >

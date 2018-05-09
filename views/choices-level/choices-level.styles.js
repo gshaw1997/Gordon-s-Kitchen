@@ -1,23 +1,37 @@
 /**
-*This is the stylesheet for the 'choices-level' view
-**/
-import { StyleSheet, Dimensions } from 'react-native';
+ *This is the stylesheet for the 'choices-level' view
+ **/
+import {
+    StyleSheet,
+    Dimensions
+} from 'react-native';
 
 export const styles = StyleSheet.create({
     // //This view is divided into three boxes of two different sizes.
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#e58e26'
+        backgroundColor: '#F8C291'
     },
     ingredientsBox: {
-        flex: .60,
+        flex: 1,
         width: '100%',
         alignItems: 'center',
         justifyContent: 'space-around'
     },
     dishNameBox: {
-        flex: .20
+        alignItems: 'center',
+    },
+    penaltyBox: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    penalty: {
+        height: 75,
+        width: 75
+    },
+    penaltyLoss: {
+        opacity: .5
     },
     buttonsBox: {
         flex: .20
@@ -34,10 +48,10 @@ export const styles = StyleSheet.create({
     //Styling for the ingredients
     ingredientsWrapper: {
         alignItems: 'center',
-        height: 75,
-        width: 75
+        marginBottom: 10,
     },
-    ingredientsImage:{
+    ingredientsImage: {
+        alignSelf: 'center',
         width: 90,
         height: 90
     },

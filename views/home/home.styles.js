@@ -43,9 +43,9 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: 'bold',
-    fontSize: 30,
-    color: '#FFF',
     fontFamily: 'bangers',
+    fontSize: 25,
+    color: '#FFF',
     marginTop: 15
   },
   buttonEasy: {
