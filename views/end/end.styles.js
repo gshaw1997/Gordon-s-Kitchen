@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     company: {
         position: 'absolute',
         bottom: 10,
-        fontFamily: 'gloria-hallelujah'
+        fontFamily: 'gloria-hallelujah',
+        color: 'white'
     }
 });

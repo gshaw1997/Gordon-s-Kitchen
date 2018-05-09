@@ -24,7 +24,7 @@ export default class EndScreen extends React.Component {
                     style={styles.smirkingGordon}
                     source={require('../../assets/images/smirking-gordon.png')}
                 />
-                 <View style={styles.textWrapper}>
+                <View style={styles.textWrapper}>
                     <Text style={styles.creditsText}> This game was created by Gustavus Shaw II, Alex Goldberg, and Golda Meir Chiong </Text>
                 </View>
                 <Text style={styles.company}>A+ Games</Text>

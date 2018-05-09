@@ -7,15 +7,28 @@ export const styles = StyleSheet.create({
     //This view is divided into three boxes of two different sizes (box 1 and box 2).
     container: {
         flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#e84118'
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#c23616'
     },
-    box1: {
-        flex: .35,
+    textWrapper: {
+        flex: 0.25,
+        justifyContent: 'center',
         flexWrap: 'wrap'
     },
-    box2: {
-        flex: .325,
-        flexWrap: 'wrap'
+    text: {
+        fontFamily: 'caesar-dressing',
+        fontSize: 70,
+        color: 'white'
     },
+    madGordon: {
+        height: 200,
+        width: 200
+    },
+    company: {
+        position: 'absolute',
+        bottom: 10,
+        fontFamily: 'gloria-hallelujah',
+        color: 'white'
+    }
 });
