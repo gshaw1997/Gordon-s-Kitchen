@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import {
+  StyleSheet
+} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -43,7 +45,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     color: '#FFF',
-    fontFamily: 'kalam',
+    fontFamily: 'bangers',
     marginTop: 15
   },
   buttonEasy: {

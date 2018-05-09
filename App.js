@@ -34,20 +34,22 @@ const RootStack = StackNavigator(
     ChoicesLevel: {
       screen: ChoicesLevelScreen
     },
-    Failure:{
+    Failure: {
       screen: FailureScreen
     },
-    Success:{
+    Success: {
       screen: SuccessScreen
     },
-    End:{
+    End: {
       screen: EndScreen
     }
   },
   {
-    initialRouteName: 'Splash',
+    initialRouteName: 'Login',
     navigationOptions: {
-      headerStyle: { height: 0 },
+      headerStyle: {
+        height: 0
+      },
       headerLeft: null
     }
   }
@@ -55,24 +57,28 @@ const RootStack = StackNavigator(
 
 export default class App extends React.Component {
   state = {
-    fontLoaded: false,
+    fontLoaded: false
   };
   //FUNCTION FOR THE FONTS TO LOAD
   async componentDidMount() {
     await Font.loadAsync({
       // Gaegu font
-      'gaegu': require('./assets/fonts/Gaegu/Gaegu-Regular.ttf'),
+      gaegu: require('./assets/fonts/Gaegu/Gaegu-Regular.ttf'),
       // Kirang Haerang font
       'kirang-haerang': require('./assets/fonts/KirangHaerang/KirangHaerang-Regular.ttf'),
       //Caesar Dressing font
-      'caesar-dressing': require ('./assets/fonts/CaesarDressing/CaesarDressing-Regular.ttf'),
+      'caesar-dressing': require('./assets/fonts/CaesarDressing/CaesarDressing-Regular.ttf'),
       //Gloria Hallelujah font
-      'gloria-hallelujah': require ('./assets/fonts/GloriaHallelujah/Gloria-Hallelujah-Regular.ttf'),
+      'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah/Gloria-Hallelujah-Regular.ttf'),
       //Kalam
-      'kalam': require ('./assets/fonts/Kalam/Kalam-Regular.ttf'),
-      'kalam-bold': require ('./assets/fonts/Kalam/Kalam-Bold.ttf'),
+      kalam: require('./assets/fonts/Kalam/Kalam-Regular.ttf'),
+      'kalam-bold': require('./assets/fonts/Kalam/Kalam-Bold.ttf'),
+      // Bangers
+      bangers: require('./assets/fonts/Bangers/Bangers-Regular.ttf')
     });
-    this.setState({ fontLoaded: true });
+    this.setState({
+      fontLoaded: true
+    });
   }
   render() {
     if (!this.state.fontLoaded) return null;
