@@ -18,7 +18,8 @@ export default class ChoicesLevelScreen extends React.Component {
             stepNum: 1,
             penalties: 0,
             loaded: false,
-            multipleCorrect: false
+            multipleCorrect: false,
+            selectedOptions: []
         }
     }
 
@@ -61,11 +62,11 @@ export default class ChoicesLevelScreen extends React.Component {
             this.setState({
                 multipleCorrect: step.correctOptions.length > 1
             });
+            this.setState({selectedOptions: []});
             this.setState({loaded: true})
         }else{
             this.props.navigation.navigate('Success', {dish: this.state.dish, penalties: this.state.penalties});
         }
-        console.log(`STEP ${this.state.stepNum}: `, this.state.step);
     }
 
     shuffle(array) {
@@ -105,6 +106,52 @@ export default class ChoicesLevelScreen extends React.Component {
                         dish: this.state.dish,
                         penalties: penalties
                     });
+            }
+        }
+    }
+
+    toggleSelection(option){
+        const selected = this.state.selectedOptions;
+
+        if(selected.includes(option.id)){
+            const index = selected.indexOf(option.id);
+            selected.splice(index,1);
+        }else{
+            selected.push(option.id);
+        }
+        this.setState({selectedOptions: selected});
+    }
+
+    checkSelections() {
+        let stepNum = this.state.stepNum;
+        const correct = this.state.step.correctOptions;
+        const selected = this.state.selectedOptions;
+        if(selected.length >= correct.length){
+
+            correct.sort((a, b)=> a-b);
+            selected.sort((a, b) => a - b);
+
+            if (JSON.stringify(selected) === JSON.stringify(correct)) {
+                ++stepNum;
+                this.setState({
+                    stepNum
+                });
+                this.loadStep(stepNum);
+            } else {
+                console.log('DEDUCTED')
+                const penalties = this.state.penalties + 1;
+                this.setState({
+                    penalties
+                });
+                if (penalties === 3) {
+                    this
+                        .props
+                        .navigation
+                        .navigate('Failure', {
+                            dish: this.state.dish,
+                            penalties: penalties
+                        });
+                }
             }
         }
     }
@@ -167,9 +214,12 @@ export default class ChoicesLevelScreen extends React.Component {
                                     onPress={() => {
                                     if (!this.state.multipleCorrect) {
                                         this.checkSelection(option);
+                                    }else{
+                                        this.toggleSelection(option);
+                                        this.checkSelections();
                                     }
                                 }}
-                                    style={styles.ingredientsWrapper}>
+                                    style={[styles.ingredientsWrapper, this.state.selectedOptions.includes(option.id) ? styles.selected : styles.ingredientsWrapper]}>
                                     <Image
                                         resizeMode="contain"
                                         style={styles.ingredientsImage}
@@ -188,14 +238,6 @@ export default class ChoicesLevelScreen extends React.Component {
                                 style={[styles.button, styles.quitButtonImage]}
                                 source={require('../../assets/images/quit-button.png')}/>
                         </TouchableOpacity>
-                        {this.state.multipleCorrect && <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Failure')}
-                            style={styles.nextButton}>
-                            <Image
-                                resizeMode="contain"
-                                style={[styles.button, styles.nextButtonImage]}
-                                source={require('../../assets/images/next-button.png')}/>
-                        </TouchableOpacity>}
                     </View>
                 </View>
             )

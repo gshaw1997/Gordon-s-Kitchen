@@ -16,7 +16,6 @@ export class DishService {
     getDish(id) {
         return axios.get(DISH_ROUTES.GET_DISH(id)).then((res) => {
             const dish = res.data;
-            console.log('DISH: ', dish)
             return dish;
         }).catch(e => {
             return Promise.reject(e.response.data);

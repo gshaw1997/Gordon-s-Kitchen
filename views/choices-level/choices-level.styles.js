@@ -55,6 +55,12 @@ export const styles = StyleSheet.create({
         width: 90,
         height: 90
     },
+    selected:{
+        borderRadius: 100,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        backgroundColor: '#FFF'
+    },
     cookTime: {
         fontSize: 20,
     },
