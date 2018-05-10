@@ -53,4 +53,11 @@ export class AuthService {
             console.log('Could not load user', e)
         }
     }
+    async clearUser() {
+        try {
+         await AsyncStorage.removeItem('@UserStore:user');
+        } catch (e) {
+            console.log('Could not clear user', e)
+        }
+    }
 }
