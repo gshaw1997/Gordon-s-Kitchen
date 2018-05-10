@@ -20,29 +20,43 @@ export default class LoginScreen extends React.Component {
         }
     }
 
-    async componentWillMount(){
-        try{
-            const user = await this.authService.getUser();
-            if(user){
-                this.props.navigation.navigate('Home');
+    async componentWillMount() {
+        try {
+            const user = await this
+                .authService
+                .getUser();
+            if (user) {
+                this
+                    .props
+                    .navigation
+                    .navigate('Home');
             }
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
 
     async handleLogin() {
         try {
-            const username = this.state.username.trim();
-            const password = this.state.password.trim();
-            if(!username || !password){
+            const username = this
+                .state
+                .username
+                .trim();
+            const password = this
+                .state
+                .password
+                .trim();
+            if (!username || !password) {
                 return;
             }
 
             const user = await this
                 .authService
                 .login(this.state.username, this.state.password);
-                this.props.navigation.navigate('Home');
+            this
+                .props
+                .navigation
+                .navigate('Home');
 
         } catch (e) {
             this.setState({errorMsg: e})
@@ -50,16 +64,25 @@ export default class LoginScreen extends React.Component {
     }
     async handleSignUp() {
         try {
-            const username = this.state.username.trim();
-            const password = this.state.password.trim();
-            if(!username || !password){
+            const username = this
+                .state
+                .username
+                .trim();
+            const password = this
+                .state
+                .password
+                .trim();
+            if (!username || !password) {
                 return;
             }
 
             const user = await this
                 .authService
                 .register(this.state.username, this.state.password);
-                this.props.navigation.navigate('Home');
+            this
+                .props
+                .navigation
+                .navigate('Home');
 
         } catch (e) {
             this.setState({errorMsg: e})
@@ -117,7 +140,7 @@ export default class LoginScreen extends React.Component {
                         {!this.state.formToggled && <TouchableOpacity
                             onPress={() => this.setState({formToggled: true, signUp: true, login: false})}
                             style={[styles.button, styles.facebook]}>
-                            <Text style={[styles.defaultText, styles.buttonText]}>
+                            <Text style={[styles.buttonText]}>
                                 SIGN UP
                             </Text>
                         </TouchableOpacity>}
@@ -126,7 +149,7 @@ export default class LoginScreen extends React.Component {
                                     onPress=
                                     { () => this.handleSignUp() }
                                     style={[styles.button, styles.phone]}>
-                                    <Text style={[styles.defaultText, styles.buttonText]}>
+                                    <Text style={[styles.buttonText]}>
                                         SIGNUP
                                     </Text>
                                 </TouchableOpacity>
@@ -134,7 +157,7 @@ export default class LoginScreen extends React.Component {
                                 onPress=
                                 { () =>{ if(!this.state.formToggled){ this.setState({formToggled: true, signUp: false, login: true}) }else{ this.handleLogin(); } } }
                                 style={[styles.button, styles.phone]}>
-                                <Text style={[styles.defaultText, styles.buttonText]}>
+                                <Text style={[styles.buttonText]}>
                                     LOGIN
                                 </Text>
                             </TouchableOpacity>

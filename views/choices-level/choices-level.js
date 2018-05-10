@@ -19,7 +19,8 @@ export default class ChoicesLevelScreen extends React.Component {
             penalties: 0,
             loaded: false,
             multipleCorrect: false,
-            selectedOptions: []
+            selectedOptions: [],
+            reactionTxt: null
         }
     }
 
@@ -64,8 +65,14 @@ export default class ChoicesLevelScreen extends React.Component {
             });
             this.setState({selectedOptions: []});
             this.setState({loaded: true})
-        }else{
-            this.props.navigation.navigate('Success', {dish: this.state.dish, penalties: this.state.penalties});
+        } else {
+            this
+                .props
+                .navigation
+                .navigate('Success', {
+                    dish: this.state.dish,
+                    penalties: this.state.penalties
+                });
         }
     }
 
@@ -110,13 +117,13 @@ export default class ChoicesLevelScreen extends React.Component {
         }
     }
 
-    toggleSelection(option){
+    toggleSelection(option) {
         const selected = this.state.selectedOptions;
 
-        if(selected.includes(option.id)){
+        if (selected.includes(option.id)) {
             const index = selected.indexOf(option.id);
-            selected.splice(index,1);
-        }else{
+            selected.splice(index, 1);
+        } else {
             selected.push(option.id);
         }
         this.setState({selectedOptions: selected});
@@ -126,23 +133,19 @@ export default class ChoicesLevelScreen extends React.Component {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions;
         const selected = this.state.selectedOptions;
-        if(selected.length >= correct.length){
+        if (selected.length >= correct.length) {
 
-            correct.sort((a, b)=> a-b);
+            correct.sort((a, b) => a - b);
             selected.sort((a, b) => a - b);
 
             if (JSON.stringify(selected) === JSON.stringify(correct)) {
                 ++stepNum;
-                this.setState({
-                    stepNum
-                });
+                this.setState({stepNum});
                 this.loadStep(stepNum);
             } else {
                 console.log('DEDUCTED')
                 const penalties = this.state.penalties + 1;
-                this.setState({
-                    penalties
-                });
+                this.setState({penalties});
                 if (penalties === 3) {
                     this
                         .props
@@ -169,40 +172,48 @@ export default class ChoicesLevelScreen extends React.Component {
                                 .toUpperCase()}
                         </Text>
                         <View style={styles.penaltyBox}>
-                            {this.state.penalties > 2
-                                ? <Image
+                            <View style={styles.penaltyWrapper}>
+                                {this.state.penalties > 2
+                                    ? <Image
+                                            resizeMode="contain"
+                                            style={[styles.penalty, styles.penaltyLoss]}
+                                            source={require('../../assets/images/surprised-gordon.png')}/>
+                                    : <Image
                                         resizeMode="contain"
-                                        style={[styles.penalty, styles.penaltyLoss]}
-                                        source={require('../../assets/images/surprised-gordon.png')}/>
-                                : <Image
-                                    resizeMode="contain"
-                                    style={[styles.penalty]}
-                                    source={require('../../assets/images/mad-gordon.png')}/>
+                                        style={[styles.penalty]}
+                                        source={require('../../assets/images/mad-gordon.png')}/>
 }
-                            {this.state.penalties > 1
-                                ? <Image
+                                {this.state.penalties > 1
+                                    ? <Image
+                                            resizeMode="contain"
+                                            style={[styles.penalty, styles.penaltyLoss]}
+                                            source={require('../../assets/images/surprised-gordon.png')}/>
+                                    : <Image
                                         resizeMode="contain"
-                                        style={[styles.penalty, styles.penaltyLoss]}
-                                        source={require('../../assets/images/surprised-gordon.png')}/>
-                                : <Image
-                                    resizeMode="contain"
-                                    style={[styles.penalty]}
-                                    source={require('../../assets/images/mad-gordon.png')}/>
+                                        style={[styles.penalty]}
+                                        source={require('../../assets/images/mad-gordon.png')}/>
 }
-                            {this.state.penalties > 0
-                                ? <Image
+                                {this.state.penalties > 0
+                                    ? <Image
+                                            resizeMode="contain"
+                                            style={[styles.penalty, styles.penaltyLoss]}
+                                            source={require('../../assets/images/surprised-gordon.png')}/>
+                                    : <Image
                                         resizeMode="contain"
-                                        style={[styles.penalty, styles.penaltyLoss]}
-                                        source={require('../../assets/images/surprised-gordon.png')}/>
-                                : <Image
-                                    resizeMode="contain"
-                                    style={[styles.penalty]}
-                                    source={require('../../assets/images/mad-gordon.png')}/>
+                                        style={[styles.penalty]}
+                                        source={require('../../assets/images/mad-gordon.png')}/>
 }
+                            </View>
+
+                            {this.state.reactionTxt && <View style={styles.reactionBox}>
+                                <Text style={styles.reaction}>{this.state.reactionTxt}</Text>
+                            </View>}
                         </View>
                     </View>
                     <View style={styles.ingredientsBox}>
-                        {this.state.stepNum < this.state.steps.length &&<Text style={styles.narrationText}>The next ingredient is</Text>}
+                        {this.state.stepNum < this.state.steps.length &&< Text style = {
+                            styles.narrationText
+                        } > The next ingredient is </Text>}
                         {this.state.stepNum === this.state.steps.length && <Text style={styles.narrationText}>Cook for...</Text>}
                         {this
                             .state
@@ -214,12 +225,20 @@ export default class ChoicesLevelScreen extends React.Component {
                                     onPress={() => {
                                     if (!this.state.multipleCorrect) {
                                         this.checkSelection(option);
-                                    }else{
+                                    } else {
                                         this.toggleSelection(option);
                                         this.checkSelections();
                                     }
                                 }}
-                                    style={[styles.ingredientsWrapper, this.state.selectedOptions.includes(option.id) ? styles.selected : styles.ingredientsWrapper]}>
+                                    style={[
+                                    styles.ingredientsWrapper,
+                                    this
+                                        .state
+                                        .selectedOptions
+                                        .includes(option.id)
+                                        ? styles.selected
+                                        : styles.ingredientsWrapper
+                                ]}>
                                     <Image
                                         resizeMode="contain"
                                         style={styles.ingredientsImage}

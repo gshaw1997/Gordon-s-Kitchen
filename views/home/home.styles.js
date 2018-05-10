@@ -1,6 +1,12 @@
 import {
+  Platform,
+  StatusBar,
   StyleSheet
 } from 'react-native';
+
+
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,9 +24,15 @@ export const styles = StyleSheet.create({
     left: 0,
     right: 0
   },
-  textWrapper: {
-    flex: 0.75,
-    paddingVertical: 20
+  topBar: {
+    width: '100%',
+    height: 45,
+    paddingVertical: 10,
+    paddingLeft: 20,
+  },
+  profileButton: {
+    width: 45,
+    height: 45
   },
   title: {
     textAlign: 'center',
@@ -39,14 +51,14 @@ export const styles = StyleSheet.create({
     flex: 1.5,
     width: '100%',
     alignItems: 'center',
-    zIndex: 2
+    zIndex: 2,
+    position: 'absolute',
+    bottom: 50
   },
   buttonText: {
     fontWeight: 'bold',
-    fontFamily: 'bangers',
     fontSize: 25,
     color: '#FFF',
-    marginTop: 15
   },
   buttonEasy: {
     backgroundColor: '#78E08F'

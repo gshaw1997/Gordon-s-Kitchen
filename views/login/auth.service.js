@@ -15,28 +15,43 @@ export class AuthService {
         }
     }
     register(username, password) {
-        return axios.post(AUTH_ROUTES.REGISTER, {
-            username,
-            password
-        }).then(async (res) => {
-            const user = res.data;
-            await this.setUser(user);
-            return user;
-        }).catch(e => {
-            return Promise.reject(e.response.data);
-        })
+        return axios
+            .post(AUTH_ROUTES.REGISTER, {
+                username,
+                password
+            })
+            .then(async (res) => {
+                const user = res.data;
+                await this.setUser(user);
+                return user;
+            })
+            .catch(e => {
+                return Promise.reject(e.response.data);
+            })
     }
     login(username, password) {
-        return axios.post(AUTH_ROUTES.LOGIN, {
-            username,
-            password
-        }).then(async (res) => {
-            const user = res.data;
-            await this.setUser(user);
-            return user;
-        }).catch(e => {
-            return Promise.reject(e.response.data);
-        })
+        return axios
+            .post(AUTH_ROUTES.LOGIN, {
+                username,
+                password
+            })
+            .then(async (res) => {
+                const user = res.data;
+                await this.setUser(user);
+                return user;
+            })
+            .catch(e => {
+                return Promise.reject(e.response.data);
+            })
+    }
+
+    async logout(navigation) {
+        try {
+            await this.clearUser();
+            navigation.navigate('Login');
+        } catch (e) {
+            console.log('Could not logout')
+        }
     }
     async setUser(user) {
         try {
@@ -55,7 +70,7 @@ export class AuthService {
     }
     async clearUser() {
         try {
-         await AsyncStorage.removeItem('@UserStore:user');
+            await AsyncStorage.removeItem('@UserStore:user');
         } catch (e) {
             console.log('Could not clear user', e)
         }

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { Font } from 'expo';
+import React, {Component} from 'react';
+import {View, Text} from 'react-native';
+import {StackNavigator} from 'react-navigation';
+import {Font} from 'expo';
+import {StatusBar} from 'react-native';
 
 // VIEWS
 import SplashScreen from './views/splash/splash';
@@ -14,75 +15,80 @@ import FailureScreen from './views/failure/failure';
 import SuccessScreen from './views/success/success';
 import EndScreen from './views/end/end';
 import RewardSummaryScreen from './views/reward-summary/reward-summary';
+import ProfileScreen from './views/profile/profile';
 
-const RootStack = StackNavigator(
-  {
+const RootStack = StackNavigator({
     Splash: {
-      screen: SplashScreen
+        screen: SplashScreen
     },
     Login: {
-      screen: LoginScreen
+        screen: LoginScreen
     },
+     Profile: {
+       screen: ProfileScreen
+     },
     Home: {
-      screen: HomeScreen
+        screen: HomeScreen
     },
     DishSelect: {
-      screen: DishSelectScreen
+        screen: DishSelectScreen
     },
     Start: {
-      screen: StartScreen
+        screen: StartScreen
     },
     ChoicesLevel: {
-      screen: ChoicesLevelScreen
+        screen: ChoicesLevelScreen
     },
     Failure: {
-      screen: FailureScreen
+        screen: FailureScreen
     },
     Success: {
-      screen: SuccessScreen
+        screen: SuccessScreen
     },
     RewardSummary: {
-      screen: RewardSummaryScreen
+        screen: RewardSummaryScreen
     },
     End: {
-      screen: EndScreen
+        screen: EndScreen
     }
-  },
-  {
-    initialRouteName: 'Login',
+}, {
+    initialRouteName: 'Profile',
     navigationOptions: {
-      header: null
+        header: null
     }
-  }
-);
+});
 
 export default class App extends React.Component {
-  state = {
-    fontLoaded: false
-  };
-  //FUNCTION FOR THE FONTS TO LOAD
-  async componentDidMount() {
-    await Font.loadAsync({
-      // Gaegu font
-      gaegu: require('./assets/fonts/Gaegu/Gaegu-Regular.ttf'),
-      // Kirang Haerang font
-      'kirang-haerang': require('./assets/fonts/KirangHaerang/KirangHaerang-Regular.ttf'),
-      //Caesar Dressing font
-      'caesar-dressing': require('./assets/fonts/CaesarDressing/CaesarDressing-Regular.ttf'),
-      //Gloria Hallelujah font
-      'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah/Gloria-Hallelujah-Regular.ttf'),
-      //Kalam
-      kalam: require('./assets/fonts/Kalam/Kalam-Regular.ttf'),
-      'kalam-bold': require('./assets/fonts/Kalam/Kalam-Bold.ttf'),
-      // Bangers
-      bangers: require('./assets/fonts/Bangers/Bangers-Regular.ttf')
-    });
-    this.setState({
-      fontLoaded: true
-    });
-  }
-  render() {
-    if (!this.state.fontLoaded) return null;
-    return <RootStack />;
-  }
+    state = {
+        fontLoaded: false
+    };
+    //FUNCTION FOR THE FONTS TO LOAD
+    async componentDidMount() {
+        StatusBar.setHidden(true);
+
+        await Font.loadAsync({
+            // Gaegu font
+            gaegu: require('./assets/fonts/Gaegu/Gaegu-Regular.ttf'),
+            // Kirang Haerang font
+            'kirang-haerang': require('./assets/fonts/KirangHaerang/KirangHaerang-Regular.ttf'),
+            //Caesar Dressing font
+            'caesar-dressing': require('./assets/fonts/CaesarDressing/CaesarDressing-Regular.ttf'),
+            //Gloria Hallelujah font
+            'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah/Gloria-Hallelujah-Regular.ttf'),
+            //Kalam
+            kalam: require('./assets/fonts/Kalam/Kalam-Regular.ttf'),
+            'kalam-bold': require('./assets/fonts/Kalam/Kalam-Bold.ttf'),
+            // Bangers
+            bangers: require('./assets/fonts/Bangers/Bangers-Regular.ttf'),
+            // OpenSans
+            'open-sans': require('./assets/fonts/OpenSans/OpenSans-Regular.ttf'),
+            'open-sans-semi-bold': require('./assets/fonts/OpenSans/OpenSans-SemiBold.ttf')
+        });
+        this.setState({fontLoaded: true});
+    }
+    render() {
+        if (!this.state.fontLoaded) 
+            return null;
+        return <RootStack/>;
+    }
 }

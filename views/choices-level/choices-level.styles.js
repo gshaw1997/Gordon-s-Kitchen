@@ -23,18 +23,51 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     penaltyBox: {
+        width: '100%',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    penaltyWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginBottom: 15,
     },
     penalty: {
         height: 75,
-        width: 75
+        width: 75,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 1,
+            height: 0
+        },
+        shadowOpacity: .1,
+        shadowRadius: 2,
     },
     penaltyLoss: {
         opacity: .5
     },
     buttonsBox: {
-        flex: .20
+        flex: .20,
+        position: 'relative'
+    },
+    reactionBox: {
+        width: '75%',
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 1,
+            height: 2
+        },
+        shadowOpacity: .25,
+        shadowRadius: 2,
+    },
+    reaction: {
+        fontSize: 18,
+        textAlign: 'center'
     },
     //Basic button styling
     button: {
@@ -55,7 +88,7 @@ export const styles = StyleSheet.create({
         width: 90,
         height: 90
     },
-    selected:{
+    selected: {
         borderRadius: 100,
         paddingVertical: 10,
         paddingHorizontal: 10,
@@ -89,9 +122,9 @@ export const styles = StyleSheet.create({
         fontFamily: 'gaegu',
         fontSize: 30,
         textAlign: 'center',
-        padding: 40
     },
     title: {
+        marginTop: 30,
         fontSize: 50
     }
 });

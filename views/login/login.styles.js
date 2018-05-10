@@ -37,10 +37,14 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 18,
+    color: '#FFF',
+    fontFamily: 'open-sans-semi-bold',
   },
   textLight: {
-    color: '#828282'
+    fontSize: 15,
+    color: '#828282',
+    fontFamily: 'open-sans',
   },
   errorMsg: {
     color: '#e84118'
@@ -66,7 +70,7 @@ export const styles = StyleSheet.create({
   },
   bottom: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 10
   },
   backText: {
     fontSize: 18,

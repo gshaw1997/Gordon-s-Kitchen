@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf071cab-9da6-4ed8-8c66-f55f1538a352" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gordons-kitchen-client.iml" afterPath="$PROJECT_DIR$/.idea/gordons-kitchen-client.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change beforePath="$PROJECT_DIR$/views/home/home.styles.js" afterPath="$PROJECT_DIR$/views/home/home.styles.js" />
-      <change beforePath="$PROJECT_DIR$/views/login/login.js" afterPath="$PROJECT_DIR$/views/login/login.js" />
-      <change beforePath="$PROJECT_DIR$/views/login/login.styles.js" afterPath="$PROJECT_DIR$/views/login/login.styles.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +40,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -57,9 +54,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
