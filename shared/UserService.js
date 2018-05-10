@@ -17,7 +17,7 @@ export class UserService {
         })
     }
     getFriends(userID) {
-        return axios.get(USER_ROUTES.GET_USERS_FRIENDS(user)).then(async (res) => {
+        return axios.get(USER_ROUTES.GET_USERS_FRIENDS(userID)).then(async (res) => {
             const friends = res.data;
             return friends;
         }).catch(e => {

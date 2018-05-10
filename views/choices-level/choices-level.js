@@ -143,7 +143,6 @@ export default class ChoicesLevelScreen extends React.Component {
                 this.setState({stepNum});
                 this.loadStep(stepNum);
             } else {
-                console.log('DEDUCTED')
                 const penalties = this.state.penalties + 1;
                 this.setState({penalties});
                 if (penalties === 3) {
