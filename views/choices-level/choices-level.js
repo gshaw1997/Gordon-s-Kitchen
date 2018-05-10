@@ -62,8 +62,10 @@ export default class ChoicesLevelScreen extends React.Component {
                 multipleCorrect: step.correctOptions.length > 1
             });
             this.setState({loaded: true})
+        }else{
+            this.props.navigation.navigate('Success');
         }
-        console.log('CURRENT STEP: ', this.state.step);
+        console.log(`STEP ${this.state.stepNum}: `, this.state.step);
     }
 
     shuffle(array) {
@@ -89,7 +91,9 @@ export default class ChoicesLevelScreen extends React.Component {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions[0];
         if (option.id === correct) {
-            this.loadStep(++stepNum)
+            ++stepNum;
+            this.setState({stepNum});
+            this.loadStep(stepNum);
         } else {
             const penalties = this.state.penalties + 1;
             this.setState({penalties});
@@ -148,7 +152,8 @@ export default class ChoicesLevelScreen extends React.Component {
                         </View>
                     </View>
                     <View style={styles.ingredientsBox}>
-                        <Text style={styles.narrationText}>The next ingredient is:</Text>
+                        {this.state.stepNum < this.state.steps.length &&<Text style={styles.narrationText}>The next ingredient is</Text>}
+                        {this.state.stepNum === this.state.steps.length && <Text style={styles.narrationText}>Cook for...</Text>}
                         {this
                             .state
                             .step

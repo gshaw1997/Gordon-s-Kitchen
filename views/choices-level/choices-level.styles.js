@@ -55,6 +55,9 @@ export const styles = StyleSheet.create({
         width: 90,
         height: 90
     },
+    cookTime: {
+        fontSize: 20,
+    },
     //Next button styling
     nextButton: {
         position: 'absolute',
