@@ -20,6 +20,17 @@ export default class LoginScreen extends React.Component {
         }
     }
 
+    async componentWillMount(){
+        try{
+            const user = await this.authService.getUser();
+            if(user){
+                this.props.navigation.navigate('Home');
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+
     async handleLogin() {
         try {
             const username = this.state.username.trim();
