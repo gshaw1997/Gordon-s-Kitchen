@@ -131,10 +131,10 @@ export default class ProfileScreen extends React.Component {
                                 style={[styles.defaultTxt, styles.buttonTxt]}
                                 >Logout</Text>
                         </TouchableOpacity>}
-                        <TouchableOpacity style={[styles.button, styles.backButton]}>
+                        <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => this.props.navigation.navigate('Home')}>
                             <Text
                                 style={[styles.defaultTxt, styles.buttonTxt]}
-                                onPress={() => this.props.navigation.navigate('Home')}>Back</Text>
+                                >Back</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
