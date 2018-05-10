@@ -1,7 +1,9 @@
 /*
-*This si the stylesheet for the dish-select view
-*/
-import { StyleSheet } from 'react-native';
+ *This si the stylesheet for the dish-select view
+ */
+import {
+  StyleSheet
+} from 'react-native';
 
 const backButtonSize = 75;
 
@@ -16,7 +18,16 @@ export const styles = StyleSheet.create({
   title: {
     color: '#FFF',
     fontSize: 55,
-    fontFamily: 'kalam-bold'
+    fontFamily: 'kalam-bold',
+    textAlign: 'center'
+  },
+  paddedWrapper: {
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  comingSoon: {
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 30
   },
   buttonWrapper: {
     marginTop: 50,
