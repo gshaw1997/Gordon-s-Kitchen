@@ -78,7 +78,7 @@ export default class DishSelectScreen extends React.Component {
                         })}
                 </View>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.goBack()}
+                    onPress={() => this.props.navigation.navigate('Home')}
                     style={styles.backButton}>
                     <Image
                         resizeMode="contain"

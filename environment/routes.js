@@ -8,7 +8,15 @@ export const AUTH_ROUTES = {
 };
 
 export const USER_ROUTES = {
-
+  GET_USER: function (userID) {
+    return `${environment.apiURL}/users/${userID}`;
+  },
+  GET_USERS_FRIENDS: function (userID) {
+    return `${environment.apiURL}/users/${userID}/friends`;
+  },
+  ADD_COMPLETION: function (userID) {
+    return `${environment.apiURL}/users/${userID}/completed`;
+  }
 }
 
 export const DISH_ROUTES = {

@@ -3,6 +3,19 @@ import {Text, View, Image, ImageBackground, TouchableOpacity} from 'react-native
 import {styles} from './failure.styles';
 
 export default class FailureScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dish: this
+                .props
+                .navigation
+                .getParam('dish', null),
+            penalties: this
+                .props
+                .navigation
+                .getParam('penalties', null)
+        }
+    }
     render() {
         return (
             <ImageBackground
@@ -26,7 +39,7 @@ export default class FailureScreen extends React.Component {
                     </View>
                     <View style={styles.box2}>
                         <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Home')}
+                            onPress={() => this.props.navigation.navigate('RewardSummary', {dish: this.state.dish, penalties: this.state.penalties})}
                             style={styles.nextButton}>
                             <Image
                                 resizeMode="contain"

@@ -13,6 +13,7 @@ import ChoicesLevelScreen from './views/choices-level/choices-level';
 import FailureScreen from './views/failure/failure';
 import SuccessScreen from './views/success/success';
 import EndScreen from './views/end/end';
+import RewardSummaryScreen from './views/reward-summary/reward-summary';
 
 const RootStack = StackNavigator(
   {
@@ -39,6 +40,9 @@ const RootStack = StackNavigator(
     },
     Success: {
       screen: SuccessScreen
+    },
+    RewardSummary: {
+      screen: RewardSummaryScreen
     },
     End: {
       screen: EndScreen

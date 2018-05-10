@@ -63,7 +63,7 @@ export default class ChoicesLevelScreen extends React.Component {
             });
             this.setState({loaded: true})
         }else{
-            this.props.navigation.navigate('Success');
+            this.props.navigation.navigate('Success', {dish: this.state.dish, penalties: this.state.penalties});
         }
         console.log(`STEP ${this.state.stepNum}: `, this.state.step);
     }
@@ -101,7 +101,10 @@ export default class ChoicesLevelScreen extends React.Component {
                 this
                     .props
                     .navigation
-                    .navigate('Failure');
+                    .navigate('Failure', {
+                        dish: this.state.dish,
+                        penalties: penalties
+                    });
             }
         }
     }
