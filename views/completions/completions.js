@@ -83,7 +83,7 @@ export default class CompletionsScreen extends React.Component {
                     </View>}
                 <TouchableOpacity
                     style={[styles.button, styles.backButton]}
-                    onPress={() => this.props.navigation.goBack()>
+                    onPress={() => this.props.navigation.goBack()}>
                     <Text style={styles.buttonTxt}>Back</Text>
                 </TouchableOpacity>
             </View>
