@@ -25,7 +25,8 @@ export default class SuccessScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={[styles.box2]}>
                         <Text style={styles.narrationText}>
-                            Many hours later, your dish is completed.
+                            {this.state.dish.prompts.success[0].text
+}
                         </Text>
 
                     </View>
@@ -35,7 +36,8 @@ export default class SuccessScreen extends React.Component {
                             style={styles.surprisedGordon}
                             source={require('../../assets/images/surprised-gordon.png')}/>
                         <Text style={styles.speakingText}>
-                            "Delicious. FINALLY, some good food."
+                            {this.state.dish.prompts.success[1].text
+}
                         </Text>
                     </View>
                     <View style={styles.box2}>

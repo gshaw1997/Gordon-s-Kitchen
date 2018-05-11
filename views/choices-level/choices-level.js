@@ -29,13 +29,10 @@ export default class ChoicesLevelScreen extends React.Component {
             const user = await this
                 .authService
                 .getUser();
-            const dishID = this
+            const dish = this
                 .props
                 .navigation
-                .getParam('dishID', null);
-            const dish = await this
-                .dishService
-                .getDish(dishID);
+                .getParam('dish', null);
 
             this.setState({user});
 

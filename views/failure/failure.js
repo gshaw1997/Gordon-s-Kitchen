@@ -25,10 +25,11 @@ export default class FailureScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.box2}>
                         <Text style={styles.narrationText}>
-                            Your dish is done. Gordon smiles.
+                            {this.state.dish.prompts.failure[0].text}
                         </Text>
                         <Text style={styles.speakingText}>
-                            "You've got a great future in my industry . . . as my customer."
+                            {this.state.dish.prompts.failure[1].text
+}
                         </Text>
                     </View>
                     <View style={styles.box1}>
@@ -39,7 +40,10 @@ export default class FailureScreen extends React.Component {
                     </View>
                     <View style={styles.box2}>
                         <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('RewardSummary', {dish: this.state.dish, penalties: this.state.penalties})}
+                            onPress={() => this.props.navigation.navigate('RewardSummary', {
+                            dish: this.state.dish,
+                            penalties: this.state.penalties
+                        })}
                             style={styles.nextButton}>
                             <Image
                                 resizeMode="contain"
