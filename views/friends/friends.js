@@ -171,7 +171,7 @@ export default class FriendsScreen extends React.Component {
                     </View>}
                 <TouchableOpacity
                     style={[styles.button, styles.backButton]}
-                    onPress={() => this.props.navigation.navigate('Profile')}>
+                    onPress={() => this.props.navigation.goBack()}>
                     <Text style={styles.buttonTxt}>Back</Text>
                 </TouchableOpacity>
             </View>
