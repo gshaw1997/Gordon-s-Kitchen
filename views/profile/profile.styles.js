@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     },
     usernameTxt: {
         marginVertical: 15,
-        fontSize: 35
+        fontSize: 45
     },
     progressWrapper: {
         flexDirection: 'column',

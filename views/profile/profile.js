@@ -89,9 +89,9 @@ export default class ProfileScreen extends React.Component {
                             {!this.state.isSelf && <Text style={[styles.defaultTxt, styles.usernameTxt]}>
                                 {this.state.user.username}
                             </Text>}
-                        <Text style={styles.progressTxt}>
+                        {this.state.isSelf && <Text style={styles.progressTxt}>
                             PROGRESS
-                        </Text>
+                        </Text>}
                     </View>
                     <View style={styles.progressWrapper}>
                         <View style={styles.progressMeta}>
