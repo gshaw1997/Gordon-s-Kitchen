@@ -28,6 +28,7 @@ import EndScreen from './views/end/end';
 import RewardSummaryScreen from './views/reward-summary/reward-summary';
 import ProfileScreen from './views/profile/profile';
 import FriendsScreen from './views/friends/friends';
+import CompletionsScreen from './views/completions/completions';
 
 const RootStack = StackNavigator({
     Splash: {
@@ -38,6 +39,9 @@ const RootStack = StackNavigator({
     },
     Profile: {
         screen: ProfileScreen
+    },
+    Completions:{
+        screen: CompletionsScreen
     },
     Friends: {
         screen: FriendsScreen
@@ -67,7 +71,7 @@ const RootStack = StackNavigator({
         screen: EndScreen
     }
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'Profile',
     navigationOptions: {
         header: null
     }

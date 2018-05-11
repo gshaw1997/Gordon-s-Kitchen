@@ -116,12 +116,18 @@ export default class ProfileScreen extends React.Component {
                         <Text style={[styles.defaultTxt, styles.centerTxt]}>{this.state.isSelf ? createdOn : lastSignOn}</Text>
                     </View>
                     <View style={[styles.statWrapper]}>
-                        <View style={[styles.flexColumn, styles.statBox]}>
+                        <TouchableOpacity 
+                        style={[styles.flexColumn, styles.statBox]}
+                        onPress = {
+                            () => this.props.navigation.navigate('Completions', {
+                                completed: this.state.user.completed
+                            })
+                        } >
                             <Text style={[styles.defaultTxt, styles.centerTxt, styles.playStatNum]}>{this.state.user.completed.length}</Text>
                             <Text style={[styles.defaultTxt, styles.centerTxt, styles.playStatTxt]}>Completion{this.state.user.completed.length === 1
                                     ? ''
                                     : 's'}</Text>
-                        </View>
+                        </TouchableOpacity>
                         <TouchableOpacity
                             style={[styles.flexColumn, styles.statBox]}
                             onPress={() => this.props.navigation.navigate('Friends', {friends: this.state.user.friends, isSelf: this.state.isSelf})}>
