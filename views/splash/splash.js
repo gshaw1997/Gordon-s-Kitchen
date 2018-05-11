@@ -11,7 +11,7 @@ import { styles } from './splash.styles';
 export default class SplahScreen extends React.Component {
     render() {
         return (
-            <ImageBackground
+            <View
                 resizeMode="cover"
                 style={styles.container}
             >
@@ -28,7 +28,7 @@ export default class SplahScreen extends React.Component {
                 </View>
                 <Text style={styles.company}>A+ Games</Text>
 
-            </ImageBackground>
+            </View>
         );
     }
 }

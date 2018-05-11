@@ -1,8 +1,19 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-import {StackNavigator} from 'react-navigation';
-import {Font} from 'expo';
-import {StatusBar} from 'react-native';
+import React, {
+    Component
+} from 'react';
+import {
+    View,
+    Text
+} from 'react-native';
+import {
+    StackNavigator
+} from 'react-navigation';
+import {
+    Font
+} from 'expo';
+import {
+    StatusBar
+} from 'react-native';
 
 // VIEWS
 import SplashScreen from './views/splash/splash';
@@ -16,6 +27,7 @@ import SuccessScreen from './views/success/success';
 import EndScreen from './views/end/end';
 import RewardSummaryScreen from './views/reward-summary/reward-summary';
 import ProfileScreen from './views/profile/profile';
+import FriendsScreen from './views/friends/friends';
 
 const RootStack = StackNavigator({
     Splash: {
@@ -24,9 +36,12 @@ const RootStack = StackNavigator({
     Login: {
         screen: LoginScreen
     },
-     Profile: {
-       screen: ProfileScreen
-     },
+    Profile: {
+        screen: ProfileScreen
+    },
+    Friends: {
+        screen: FriendsScreen
+    },
     Home: {
         screen: HomeScreen
     },
@@ -84,11 +99,13 @@ export default class App extends React.Component {
             'open-sans': require('./assets/fonts/OpenSans/OpenSans-Regular.ttf'),
             'open-sans-semi-bold': require('./assets/fonts/OpenSans/OpenSans-SemiBold.ttf')
         });
-        this.setState({fontLoaded: true});
+        this.setState({
+            fontLoaded: true
+        });
     }
     render() {
-        if (!this.state.fontLoaded) 
+        if (!this.state.fontLoaded)
             return null;
-        return <RootStack/>;
+        return <RootStack / > ;
     }
 }

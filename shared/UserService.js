@@ -8,6 +8,14 @@ import {
 
 export class UserService {
     authService = new AuthService();
+    findUser(username) {
+        return axios.get(USER_ROUTES.FIND_USER(username)).then(async (res) => {
+            const users = res.data;
+            return users;
+        }).catch(e => {
+            return Promise.reject(e.response.data);
+        })
+    }
     getUser(userID) {
         return axios.get(USER_ROUTES.GET_USER(user)).then(async (res) => {
             const user = res.data;

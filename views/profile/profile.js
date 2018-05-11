@@ -49,10 +49,16 @@ export default class ProfileScreen extends React.Component {
     }
 
     calculateProgressPercent(){
+        let percent = 0;
+        if(this.state.user.level.nextLevel){
         const currXP = this.state.user.totalXp;
         const xpNeeded = this.state.user.level.nextLevel.xpNeeded;
 
-        const percent =  Math.floor(((currXP/xpNeeded) * 100));
+         percent =  Math.floor(((currXP/xpNeeded) * 100));
+        }else{
+            percent = 100
+        }
+        
 
         this.setState({progressPercent: percent});
     }
@@ -93,7 +99,8 @@ export default class ProfileScreen extends React.Component {
                                 Level {this.state.user.level.number}
                             </Text>
                             <Text style={[styles.progressMetaTxt, styles.progressMetaTxtSmall]}>
-                                {this.state.isSelf ? `${this.state.user.totalXp}/${this.state.user.level.nextLevel.xpNeeded}` : ''}
+                                {this.state.isSelf && this.state.user.level.nextLevel ? `${this.state.user.totalXp}/${this.state.user.level.nextLevel.xpNeeded}` : ''}
+                                {this.state.isSelf && !this.state.user.level.nextLevel ? `${this.state.user.totalXp} XP` : ''}
                             </Text>
                         </View>
                         {this.state.isSelf && <View style={styles.progressBarWrapper}>
@@ -117,7 +124,7 @@ export default class ProfileScreen extends React.Component {
                         </View>
                         <TouchableOpacity
                             style={[styles.flexColumn, styles.statBox]}
-                            onPress={() => this.props.navigation.navigate('Friends', {friends: this.state.user.friends})}>
+                            onPress={() => this.props.navigation.navigate('Friends', {friends: this.state.user.friends, isSelf: this.state.isSelf})}>
                             <Text style={[styles.defaultTxt, styles.centerTxt, styles.playStatNum]}>{this.state.user.friends.length}</Text>
                             <Text style={[styles.defaultTxt, styles.centerTxt, styles.playStatTxt]}>Friend{this.state.user.friends.length === 1
                                     ? ''
@@ -128,10 +135,10 @@ export default class ProfileScreen extends React.Component {
                     <View style={styles.bottomWrapper}>
                         {this.state.isSelf && <TouchableOpacity style={[styles.button, styles.logoutButton]} onPress={() => this.authService.logout(this.props.navigation)}>
                             <Text
-                                style={[styles.defaultTxt, styles.buttonTxt]}
+                                style={[styles.defaultTxt, styles.buttonTxt]}userID
                                 >Logout</Text>
                         </TouchableOpacity>}
-                        <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => this.props.navigation.navigate('Home')}>
+                        <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => this.state.isSelf ? this.props.navigation.navigate('Home') : this.props.navigation.back()}>
                             <Text
                                 style={[styles.defaultTxt, styles.buttonTxt]}
                                 >Back</Text>
