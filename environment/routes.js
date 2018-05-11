@@ -14,6 +14,12 @@ export const USER_ROUTES = {
   GET_USERS_FRIENDS: function (userID) {
     return `${environment.apiURL}/users/${userID}/friends`;
   },
+  ADD_FRIEND: function (userID) {
+    return `${environment.apiURL}/users/${userID}/friends`;
+  },
+  REMOVE_FRIEND: function (userID, playerID) {
+    return `${environment.apiURL}/users/${userID}/friends/${playerID}`;
+  },
   FIND_USER: function (username) {
     return `${environment.apiURL}/users?username=${username}`;
   },

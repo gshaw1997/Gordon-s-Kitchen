@@ -17,7 +17,7 @@ export class UserService {
         })
     }
     getUser(userID) {
-        return axios.get(USER_ROUTES.GET_USER(user)).then(async (res) => {
+        return axios.get(USER_ROUTES.GET_USER(userID)).then(async (res) => {
             const user = res.data;
             return user;
         }).catch(e => {
@@ -26,6 +26,24 @@ export class UserService {
     }
     getFriends(userID) {
         return axios.get(USER_ROUTES.GET_USERS_FRIENDS(userID)).then(async (res) => {
+            const friends = res.data;
+            return friends;
+        }).catch(e => {
+            return Promise.reject(e.response.data);
+        })
+    }
+    addFriend(userID, playerID) {
+        return axios.post(USER_ROUTES.ADD_FRIEND(userID), {
+            playerID
+        }).then(async (res) => {
+            const friends = res.data;
+            return friends;
+        }).catch(e => {
+            return Promise.reject(e.response.data);
+        })
+    }
+    removeFriend(userID, playerID) {
+        return axios.delete(USER_ROUTES.REMOVE_FRIEND(userID, playerID)).then(async (res) => {
             const friends = res.data;
             return friends;
         }).catch(e => {

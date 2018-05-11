@@ -18,9 +18,11 @@ export default class FriendsScreen extends React.Component {
         super(props);
         this.state = {
             friends: [],
+            friendIDs: [],
             searchTxt: '',
             userList: [],
-            isSelf: false
+            isSelf: false,
+            user: null,
         }
 
     }
@@ -37,13 +39,15 @@ export default class FriendsScreen extends React.Component {
                 .navigation
                 .getParam('isSelf', false);
 
-            console.log('ISSELF ', isSelf)
-
-            user = this
+            const user =  await this
                 .authService
                 .getUser();
 
-            this.setState({friends, isSelf, userList: friends});
+            user.friends = await this.userService.getFriends(user.id);
+
+            const friendIDs = friends.map((user)=>user.id);
+
+            this.setState({friends, isSelf, user, friendIDs, userList: friends});
         } catch (e) {
             console.log(e)
         }
@@ -54,10 +58,41 @@ export default class FriendsScreen extends React.Component {
             const users = await this
                 .userService
                 .findUser(this.state.searchTxt);
+                
+                users = users.filter((user)=> user.id !== this.state.user.id)
 
             this.setState({userList: users})
         } catch (e) {
             console.log(e)
+        }
+    }
+
+    async addFriend(playerID) {
+        try {
+            const friends = await this.userService.addFriend(this.state.user.id, playerID);
+            const friendIDs = this.state.friendIDs;
+            friendIDs.push(playerID);
+            this.setState({
+                friends, friendIDs
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async removeFriend(playerID){
+        try {
+             const friends = await this.userService.removeFriend(this.state.user.id, playerID);
+             const friendIDs = this.state.friendIDs;
+             const index = friendIDs.indexOf(playerID);
+             friendIDs.splice(index, 1);
+
+             this.setState({
+                 friends,
+                 friendIDs
+             });
+        } catch (e) {
+            console.log(e);
         }
     }
 
@@ -87,16 +122,19 @@ export default class FriendsScreen extends React.Component {
                             paddingBottom: 60
                         }}
                             data={this.state.userList}
+                            extraData={this.state}
                             keyExtractor={this._keyExtractor}
                             renderItem={({item, index}) => {
                             const user = item;
+                            const isFriend = this.state.friendIDs.includes(user.id);
                             return (
                                 <TouchableOpacity
                                     style={[
                                     styles.userCard, index % 2 === 0
                                         ? styles.userCardEven
                                         : styles.userCardOdd
-                                ]}>
+                                ]}
+                                onPress={()=> this.props.navigation.navigate('Profile', {userID: item.id})}>
                                     <View>
                                         <Text style={[styles.usernameTxt]}>{user.username}</Text>
                                         <Text style={[styles.defaultTxt]}>
@@ -108,8 +146,17 @@ export default class FriendsScreen extends React.Component {
                                                     : 's'}&nbsp;{user.completed.length}</Text>
                                         </Text>
                                     </View>
-                                    <TouchableOpacity style={[styles.addButton, styles.plusButton]}>
-                                        <Text style={[styles.buttonTxt]}>+</Text>
+                                    <TouchableOpacity 
+                                    style={[styles.addButton, isFriend ? styles.minusButton : styles.plusButton]}
+                                    onPress={()=>{
+                                        if(isFriend){
+                                            this.removeFriend(user.id);
+                                        }else{
+                                            this.addFriend(user.id);
+                                        }
+                                    }} 
+                                    >
+                                        <Text style={[styles.buttonTxt]}>{isFriend ? '-' : '+'}</Text>
                                     </TouchableOpacity>
                                 </TouchableOpacity>
                             )
