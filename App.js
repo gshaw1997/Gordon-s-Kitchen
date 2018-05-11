@@ -71,7 +71,7 @@ const RootStack = StackNavigator({
         screen: EndScreen
     }
 }, {
-    initialRouteName: 'Profile',
+    initialRouteName: 'Login',
     navigationOptions: {
         header: null
     }

@@ -163,7 +163,7 @@ export default class LoginScreen extends React.Component {
                             </TouchableOpacity>
 }
                     </View>
-                    {!this.state.formToggled && <Text style={[styles.company, styles.textLight]}>A+ Games</Text>}
+                    {!this.state.formToggled && <Text style={[styles.textLight, styles.company]}>A+ Games</Text>}
                     {this.state.formToggled && <TouchableOpacity
                         onPress=
                         { () => this.setState({formToggled: false, signUp: false, login: false}) }
