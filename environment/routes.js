@@ -15,7 +15,7 @@ export const USER_ROUTES = {
     return `${environment.apiURL}/users/${userID}/friends`;
   },
   FIND_USER: function (username) {
-    return `${environment.apiURL}/users?${username}`;
+    return `${environment.apiURL}/users?username=${username}`;
   },
   ADD_COMPLETION: function (userID) {
     return `${environment.apiURL}/users/${userID}/completed`;
