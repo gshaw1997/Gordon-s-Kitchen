@@ -19,20 +19,23 @@ export default class ProfileScreen extends React.Component {
     }
     async componentDidMount() {
         try {
+            const loggedInUser = await this
+                .authService
+                .getUser();
             const userID = this
                 .props
                 .navigation
                 .getParam('userID', null);
             let user;
-            if (userID) {
+            if ((userID && userID === loggedInUser.id) || !userID) {
+                user = loggedInUser;
+                this.setState({
+                    isSelf: true
+                })
+            } else {
                 user = await this
                     .userService
                     .getUser(userID);
-            } else {
-                user = await this
-                    .authService
-                    .getUser();
-                this.setState({isSelf: true})
             }
 
 
