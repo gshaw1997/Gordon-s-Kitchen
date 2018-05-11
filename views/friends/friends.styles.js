@@ -14,6 +14,11 @@ export const styles = StyleSheet.create({
     defaultTxt: {
         fontSize: 15,
     },
+    headerTxt:{
+        textAlign: 'center',
+        fontFamily: 'gaegu',
+        fontSize: 45,
+    },
     searchBarWrapper: {
         backgroundColor: '#FFF',
         paddingHorizontal: 15,
