@@ -12,17 +12,17 @@ export const styles = StyleSheet.create({
         backgroundColor: '#F9F9F9'
     },
     defaultTxt: {
-        fontSize: 15,
+        fontSize: 15
     },
-    headerTxt:{
+    headerTxt: {
         textAlign: 'center',
         fontFamily: 'gaegu',
-        fontSize: 45,
+        fontSize: 45
     },
     searchBarWrapper: {
         backgroundColor: '#FFF',
         paddingHorizontal: 15,
-        paddingVertical: 15,
+        paddingVertical: 15
     },
     searchBar: {
         fontSize: 15,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
         borderColor: '#E0E0E0',
         borderRadius: 100,
         paddingLeft: 15,
-        paddingVertical: 10,
+        paddingVertical: 10
     },
     userCard: {
         flexDirection: 'row',
@@ -42,17 +42,17 @@ export const styles = StyleSheet.create({
         borderBottomWidth: .25,
         borderColor: '#E0E0E0',
         paddingHorizontal: 15,
-        paddingVertical: 15,
+        paddingVertical: 15
     },
     userCardEven: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFF'
     },
     userCardOdd: {
-        backgroundColor: '#f7f7f7',
+        backgroundColor: '#f7f7f7'
     },
     usernameTxt: {
         fontSize: 33,
-        fontFamily: 'gaegu',
+        fontFamily: 'gaegu'
     },
     addButton: {
         width: 40,
@@ -62,16 +62,16 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     plusButton: {
-        backgroundColor: '#f78172',
+        backgroundColor: '#f78172'
     },
     minusButton: {
-        backgroundColor: '#cec9c3',
+        backgroundColor: '#cec9c3'
     },
     button: {
         height: 50,
         borderRadius: 2,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     backButton: {
         backgroundColor: '#f78172',
@@ -83,20 +83,23 @@ export const styles = StyleSheet.create({
     buttonTxt: {
         color: '#FFF',
         fontSize: 40,
-        fontFamily: 'gaegu',
+        fontFamily: 'gaegu'
     },
-    userList:{
-       flex: 1,
+    backButtonTxt: {
+        fontSize: 30
     },
-    noUsersWrapper:{
-        marginTop: 30,
+    userList: {
+        flex: 1
     },
-    noUsersTxt:{
+    noUsersWrapper: {
+        marginTop: 30
+    },
+    noUsersTxt: {
         fontSize: 35,
         textAlign: 'center',
-        fontFamily: 'gaegu',
+        fontFamily: 'gaegu'
     },
-    txtStack:{
-        flexDirection: 'column',
+    txtStack: {
+        flexDirection: 'column'
     }
 });
