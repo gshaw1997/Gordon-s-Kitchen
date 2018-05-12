@@ -55,8 +55,8 @@ export const styles = StyleSheet.create({
         fontFamily: 'gaegu',
     },
     addButton: {
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 3,
         alignItems: 'center',
         justifyContent: 'center'
@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
     },
     buttonTxt: {
         color: '#FFF',
-        fontSize: 35,
+        fontSize: 40,
         fontFamily: 'gaegu',
     },
     userList:{
