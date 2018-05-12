@@ -102,7 +102,7 @@ export default class LoginScreen extends React.Component {
                     {!this.state.formToggled && <View>
                         <Text style={styles.textLight}>Sign up or login</Text>
                     </View>}
-                    {this.state.errorMsg && <View>
+                    {this.state.formToggled && this.state.errorMsg && <View>
                         <Text style={[styles.errorMsg]}>{this.state.errorMsg}</Text>
                     </View>}
                     <View style={styles.buttonWrapper}>
@@ -166,7 +166,7 @@ export default class LoginScreen extends React.Component {
                     {!this.state.formToggled && <Text style={[styles.textLight, styles.company]}>A+ Games</Text>}
                     {this.state.formToggled && <TouchableOpacity
                         onPress=
-                        { () => this.setState({formToggled: false, signUp: false, login: false}) }
+                        { () => this.setState({formToggled: false, signUp: false, login: false, errorMsg: null}) }
                         style={[styles.bottom]}>
                         <Text style={[styles.textLight, styles.backText]}>
                             Back
