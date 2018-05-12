@@ -100,7 +100,7 @@ export default class LoginScreen extends React.Component {
                 </View>
                 <View style={styles.containerBottom}>
                     {!this.state.formToggled && <View>
-                        <Text style={styles.textLight}>Sign up or login with</Text>
+                        <Text style={styles.textLight}>Sign up or login</Text>
                     </View>}
                     {this.state.errorMsg && <View>
                         <Text style={[styles.errorMsg]}>{this.state.errorMsg}</Text>

@@ -99,7 +99,7 @@ export default class RewardSummaryScreen extends React.Component {
                     </View>
                     <View style={styles.centerText}>
                         <Text style={styles.title}>Progress</Text>
-                        <Text style={styles.progress}>Level {this.state.user.level.number}: {this.state.user.level.description}</Text>
+                        <Text style={styles.progress}>Level {this.state.user.level.number}: {this.state.user.level.name}</Text>
                     </View>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('DishSelect', {difficulty: this.state.dish.difficulty})}
