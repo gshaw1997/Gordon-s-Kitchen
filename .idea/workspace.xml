@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cf071cab-9da6-4ed8-8c66-f55f1538a352" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/views/choices-level/choices-level.js" afterPath="$PROJECT_DIR$/views/choices-level/choices-level.js" />
+      <change beforePath="$PROJECT_DIR$/views/failure/failure.js" afterPath="$PROJECT_DIR$/views/failure/failure.js" />
       <change beforePath="$PROJECT_DIR$/views/start/start.js" afterPath="$PROJECT_DIR$/views/start/start.js" />
+      <change beforePath="$PROJECT_DIR$/views/success/success.js" afterPath="$PROJECT_DIR$/views/success/success.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,9 +43,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -56,6 +54,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
     </panes>
   </component>

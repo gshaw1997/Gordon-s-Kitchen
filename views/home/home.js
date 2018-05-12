@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
                 <View style={styles.buttonWrapper}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('DishSelect', {
-                        level: 'easy',
+                        difficulty: 'easy',
                         user: this.state.user
                     })}
                         style={[styles.button, styles.buttonEasy]}>
@@ -51,20 +51,20 @@ export default class HomeScreen extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('DishSelect', {
-                        level: 'medium',
+                        difficulty: 'medium',
                         user: this.state.user
                     })}
                         style={[styles.button, styles.buttonMedium]}>
                         <Text style={styles.buttonText}>MEDIUM</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('DishSelect', {level: 'intermediate'})}
+                        onPress={() => this.props.navigation.navigate('DishSelect', {difficulty: 'intermediate'})}
                         style={[styles.button, styles.buttonIntermediate]}>
                         <Text style={styles.buttonText}>INTERMEDIATE</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('DishSelect', {
-                        level: 'expert',
+                        difficulty: 'expert',
                         user: this.state.user
                     })}
                         style={[styles.button, styles.buttonExpert]}>

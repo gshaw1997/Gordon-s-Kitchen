@@ -15,7 +15,7 @@ export default class DishSelectScreen extends React.Component {
             dishLevel: this
                 .props
                 .navigation
-                .getParam('level', null),
+                .getParam('difficulty', null),
             dishes: [],
             loaded: false
         }

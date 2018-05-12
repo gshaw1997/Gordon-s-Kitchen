@@ -25,7 +25,9 @@ export default class SuccessScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={[styles.box2]}>
                         <Text style={styles.narrationText}>
-                            {this.state.dish.prompts.success[0].text
+                            {this.state.dish.prompts.success[0]
+                                ? this.state.dish.prompts.success[0].text
+                                : `Many hours later, your dish is completed.`
 }
                         </Text>
 
@@ -34,9 +36,15 @@ export default class SuccessScreen extends React.Component {
                         <Image
                             resizeMode="contain"
                             style={styles.surprisedGordon}
-                            source={require('../../assets/images/surprised-gordon.png')}/>
+                            source={this.state.dish.prompts.success[0] && this.state.dish.prompts.success[0].image
+                            ? {
+                                uri: this.state.dish.prompts.success[0].image
+                            }
+                            : require('../../assets/images/surprised-gordon.png')}/>
                         <Text style={styles.speakingText}>
-                            {this.state.dish.prompts.success[1].text
+                            {this.state.dish.prompts.success[1]
+                                ? this.state.dish.prompts.success[1].text
+                                : `"Delicious. FINALLY, some good food."`
 }
                         </Text>
                     </View>

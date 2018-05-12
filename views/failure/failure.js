@@ -25,10 +25,15 @@ export default class FailureScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.box2}>
                         <Text style={styles.narrationText}>
-                            {this.state.dish.prompts.failure[0].text}
+                            {this.state.dish.prompts.failure[0]
+                                ? this.state.dish.prompts.failure[0].text
+                                : `Your dish is done. Gordon smiles.`
+}
                         </Text>
                         <Text style={styles.speakingText}>
-                            {this.state.dish.prompts.failure[1].text
+                            {this.state.dish.prompts.failure[1]
+                                ? this.state.dish.prompts.failure[1].text
+                                : `"You've got a great future in my industry . . . as my customer."`
 }
                         </Text>
                     </View>
@@ -36,7 +41,11 @@ export default class FailureScreen extends React.Component {
                         <Image
                             resizeMode="contain"
                             style={styles.brokenHeart}
-                            source={require('../../assets/images/broken-heart.png')}/>
+                            source={this.state.dish.prompts.failure[0] && this.state.dish.prompts.failure[0].image
+                            ? {
+                                uri: this.state.dish.prompts.failure[0].image
+                            }
+                            : require('../../assets/images/broken-heart.png')}/>
                     </View>
                     <View style={styles.box2}>
                         <TouchableOpacity
