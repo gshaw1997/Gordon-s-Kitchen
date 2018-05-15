@@ -33,8 +33,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     chefHat: {
-        width: 125,
-        height: 125,
+        width: 100,
+        height: 100,
         marginBottom: 15
     },
     progressTxt: {
@@ -103,14 +103,14 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 10,
         justifyContent: 'center',
-        height: 150,
-        width: 150
+        height: 125,
+        width: 125
     },
     playStatNum: {
         fontSize: 50
     },
     playStatTxt: {
-        fontSize: 25
+        fontSize: 20
     },
     bottomWrapper: {
         position: 'absolute',
