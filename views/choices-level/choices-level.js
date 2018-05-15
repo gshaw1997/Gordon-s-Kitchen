@@ -92,16 +92,18 @@ export default class ChoicesLevelScreen extends React.Component {
         return array;
     }
 
-    checkSelection(option) {
+   async checkSelection(option) {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions[0];
         if (option.id === correct) {
+            await this.toggleReaction(true);
             ++stepNum;
             this.setState({stepNum});
             this.loadStep(stepNum);
         } else {
             const penalties = this.state.penalties + 1;
             this.setState({penalties});
+            await this.toggleReaction(false);
             if (penalties === 3) {
                 this
                     .props
@@ -126,7 +128,7 @@ export default class ChoicesLevelScreen extends React.Component {
         this.setState({selectedOptions: selected});
     }
 
-    checkSelections() {
+    async checkSelections() {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions;
         const selected = this.state.selectedOptions;
@@ -136,12 +138,14 @@ export default class ChoicesLevelScreen extends React.Component {
             selected.sort((a, b) => a - b);
 
             if (JSON.stringify(selected) === JSON.stringify(correct)) {
+                await this.toggleReaction(true);
                 ++stepNum;
                 this.setState({stepNum});
                 this.loadStep(stepNum);
             } else {
                 const penalties = this.state.penalties + 1;
                 this.setState({penalties});
+                await this.toggleReaction(false);
                 if (penalties === 3) {
                     this
                         .props
@@ -153,6 +157,26 @@ export default class ChoicesLevelScreen extends React.Component {
                 }
             }
         }
+    }
+
+    toggleReaction(positive){
+        let reaction;
+        if(positive){
+            const posReactions = this.state.dish.reactions.positive;
+            const index = Math.floor(Math.random() * posReactions.length);
+            reaction = posReactions[index].text;
+        }else{
+            const negReactions = this.state.dish.reactions.negative;
+            const index = Math.floor(Math.random() * negReactions.length);
+            reaction = negReactions[index].text;
+        }
+        this.setState({reactionTxt: reaction})
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                this.setState({reactionTxt: null});
+                resolve();
+            }, 1500)
+        })
     }
 
     render() {
