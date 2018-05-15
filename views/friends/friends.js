@@ -22,7 +22,8 @@ export default class FriendsScreen extends React.Component {
             searchTxt: '',
             userList: [],
             isSelf: false,
-            user: null
+            user: null,
+            loaded: false
         }
 
     }
@@ -49,7 +50,14 @@ export default class FriendsScreen extends React.Component {
 
             const friendIDs = friends.map((user) => user.id);
 
-            this.setState({friends, isSelf, user, friendIDs, userList: friends});
+            this.setState({
+                friends,
+                isSelf,
+                user,
+                friendIDs,
+                userList: friends,
+                loaded: true
+            });
         } catch (e) {
             console.log(e)
         }
@@ -101,111 +109,111 @@ export default class FriendsScreen extends React.Component {
 
     render() {
         return (
-            <View style={[styles.container]}>
-                <View style={styles.searchBarWrapper}>
-                    {this.state.isSelf
-                        ? < TextInput
-                    style = {
-                        [styles.searchBar]
-                    }
-                    placeholder = "Search for users"
-                    onChangeText = {
-                        (searchTxt) => {
-                            this.setState({searchTxt});
-                            if (!searchTxt) {
-                                this.setState({userList: this.state.friends})
+                <View style={[styles.container]}>
+                    <View style={styles.searchBarWrapper}>
+                        {this.state.isSelf
+                            ? < TextInput
+                        style = {
+                            [styles.searchBar]
+                        }
+                        placeholder = "Search for users"
+                        onChangeText = {
+                            (searchTxt) => {
+                                this.setState({searchTxt});
+                                if (!searchTxt) {
+                                    this.setState({userList: this.state.friends})
+                                }
                             }
                         }
-                    }
-                    onFocus = {
-                        () => this.setState({
-                            containerTop: [
-                                styles.containerTop, styles.containerTopSmall
-                            ],
-                            errorMsg: null
-                        })
-                    }
-                    onSubmitEditing = {
-                        () => this.searchUsers()
-                    }
-                    blurOnSubmit = {
-                        true
-                    }
-                    underlineColorAndroid = {
-                        'transparent'
-                    } /> : <Text style={[styles.headerTxt]}>Friends</Text>}
-                </View>
+                        onFocus = {
+                            () => this.setState({
+                                containerTop: [
+                                    styles.containerTop, styles.containerTopSmall
+                                ],
+                                errorMsg: null
+                            })
+                        }
+                        onSubmitEditing = {
+                            () => this.searchUsers()
+                        }
+                        blurOnSubmit = {
+                            true
+                        }
+                        underlineColorAndroid = {
+                            'transparent'
+                        } /> : <Text style={[styles.headerTxt]}>Friends</Text>}
+                    </View>
 
-                {this.state.userList.length
-                    ? <FlatList
-                            style={styles.userList}
-                            contentContainerStyle={{
-                            paddingBottom: 60
-                        }}
-                            data={this.state.userList}
-                            extraData={this.state}
-                            keyExtractor={this._keyExtractor}
-                            renderItem={({item, index}) => {
-                            const user = item;
-                            const isFriend = this
-                                .state
-                                .friendIDs
-                                .includes(user.id);
-                            return (
-                                <TouchableOpacity
-                                    style={[
-                                    styles.userCard, index % 2 === 0
-                                        ? styles.userCardEven
-                                        : styles.userCardOdd
-                                ]}
-                                    onPress={() => this.props.navigation.navigate('Profile', {userID: item.id})}>
-                                    <View>
-                                        <Text style={[styles.usernameTxt]}>{user.username}</Text>
-                                        <Text style={[styles.defaultTxt]}>
-                                            <Text style={styles.levelTxt}>Level&nbsp;{user.level.number}&nbsp;
-                                            </Text>
-                                            <Text>
-                                                Completion{user.completed.length === 1
-                                                    ? ''
-                                                    : 's'}&nbsp;{user.completed.length}</Text>
-                                        </Text>
-                                    </View>
+                    {this.state.userList.length
+                        ? <FlatList
+                                style={styles.userList}
+                                contentContainerStyle={{
+                                paddingBottom: 60
+                            }}
+                                data={this.state.userList}
+                                extraData={this.state}
+                                keyExtractor={this._keyExtractor}
+                                renderItem={({item, index}) => {
+                                const user = item;
+                                const isFriend = this
+                                    .state
+                                    .friendIDs
+                                    .includes(user.id);
+                                return (
                                     <TouchableOpacity
                                         style={[
-                                        styles.addButton, isFriend
-                                            ? styles.minusButton
-                                            : styles.plusButton
+                                        styles.userCard, index % 2 === 0
+                                            ? styles.userCardEven
+                                            : styles.userCardOdd
                                     ]}
-                                        onPress={() => {
-                                        if (isFriend) {
-                                            this.removeFriend(user.id);
-                                        } else {
-                                            this.addFriend(user.id);
-                                        }
-                                    }}>
-                                        <Text style={[styles.buttonTxt]}>{isFriend
-                                                ? '-'
-                                                : '+'}</Text>
+                                        onPress={() => this.props.navigation.navigate('Profile', {userID: item.id})}>
+                                        <View>
+                                            <Text style={[styles.usernameTxt]}>{user.username}</Text>
+                                            <Text style={[styles.defaultTxt]}>
+                                                <Text style={styles.levelTxt}>Level&nbsp;{user.level.number}&nbsp;
+                                                </Text>
+                                                <Text>
+                                                    Completion{user.completed.length === 1
+                                                        ? ''
+                                                        : 's'}&nbsp;{user.completed.length}</Text>
+                                            </Text>
+                                        </View>
+                                        <TouchableOpacity
+                                            style={[
+                                            styles.addButton, isFriend
+                                                ? styles.minusButton
+                                                : styles.plusButton
+                                        ]}
+                                            onPress={() => {
+                                            if (isFriend) {
+                                                this.removeFriend(user.id);
+                                            } else {
+                                                this.addFriend(user.id);
+                                            }
+                                        }}>
+                                            <Text style={[styles.buttonTxt]}>{isFriend
+                                                    ? '-'
+                                                    : '+'}</Text>
+                                        </TouchableOpacity>
                                     </TouchableOpacity>
-                                </TouchableOpacity>
-                            )
-                        }}/>
-                    : <View style={styles.noUsersWrapper}>
-                        {this.state.searchTxt
-                            ? <Text style={styles.noUsersTxt}>No users found :/</Text>
-                            : <View>
-                                <Text style={styles.noUsersTxt}>No friends :/</Text>
-                                {this.state.isSelf && <Text style={styles.noUsersTxt}>Search to add more</Text>}
-                            </View>}
-                    </View>}
-                <TouchableOpacity
-                    style={[styles.button, styles.backButton]}
-                    onPress={() => this.state.isSelf
-                    ? this.props.navigation.navigate('Profile')
-                    : this.props.navigation.goBack()}>
-                    <Text style={[styles.buttonTxt, styles.backButtonTxt]}>Back</Text>
-                </TouchableOpacity>
-            </View>
-        );
+                                )
+                            }}/>
+                        : <View style={styles.noUsersWrapper}>
+                            {this.state.searchTxt
+                                ? <Text style={styles.noUsersTxt}>No users found :/</Text>
+                                : <View>
+                                    <Text style={styles.noUsersTxt}>{this.state.loaded && 'No friends :/'}</Text>
+                                    {this.state.isSelf && <Text style={styles.noUsersTxt}>Search to add more</Text>}
+                                </View>}
+                        </View>}
+                    <TouchableOpacity
+                        style={[styles.button, styles.backButton]}
+                        onPress={() => this.state.isSelf
+                        ? this.props.navigation.navigate('Profile')
+                        : this.props.navigation.goBack()}>
+                        <Text style={[styles.buttonTxt, styles.backButtonTxt]}>Back</Text>
+                    </TouchableOpacity>
+                </View>
+            );
     }
 }

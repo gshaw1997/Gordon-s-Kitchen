@@ -16,7 +16,8 @@ export default class CompletionsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            completions: []
+            completions: [],
+            loaded: false,
         }
 
     }
@@ -36,9 +37,7 @@ export default class CompletionsScreen extends React.Component {
                 return completion;
             }));
 
-            console.log('COMPLETED: ', completions)
-
-            this.setState({completions});
+            this.setState({completions, loaded: true});
         } catch (e) {
             console.log(e)
         }
@@ -79,7 +78,7 @@ export default class CompletionsScreen extends React.Component {
                             )
                         }}/>
                     : <View style={styles.noCompletedWrapper}>
-                        <Text style={styles.noCompletedTxt}>No dishes completed :/</Text>
+                        <Text style={styles.noCompletedTxt}>{this.state.loaded && 'No dishes completed :/'}</Text>
                     </View>}
                 <TouchableOpacity
                     style={[styles.button, styles.backButton]}
