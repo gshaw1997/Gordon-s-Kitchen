@@ -1,7 +1,8 @@
 import {
     Platform,
     StatusBar,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from 'react-native';
 
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ?
@@ -10,6 +11,11 @@ const STATUSBAR_HEIGHT = Platform.OS === 'ios' ?
 
 export const PROGRESS_WIDTH = '100%';
 export const PROGRESS_WRAPPER_MARGIN = 20;
+
+const {
+    height,
+    width
+} = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
     container: {
@@ -33,12 +39,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     chefHat: {
-        width: 100,
-        height: 100,
+        width: height > 700 ? 100 : 75,
+        height: height > 700 ? 100 : 75,
         marginBottom: 15
     },
     progressTxt: {
-        fontSize: 40,
+        fontSize: height > 700 ? 40 : 30,
         fontFamily: 'gaegu'
     },
     usernameTxt: {
@@ -63,7 +69,7 @@ export const styles = StyleSheet.create({
         width: 100
     },
     progressMetaTxtLarge: {
-        fontSize: 30,
+        fontSize: 28,
         textAlign: 'center'
     },
     progressMetaTxtSmall: {
@@ -84,13 +90,13 @@ export const styles = StyleSheet.create({
         width: 50
     },
     levelName: {
-        fontSize: 35
+        fontSize: height > 700 ? 35 : 30
     },
     history: {
         marginVertical: 15
     },
     statWrapper: {
-        marginTop: 20,
+        marginTop: height > 700 ? 20 : 0,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center'
@@ -103,14 +109,14 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 10,
         justifyContent: 'center',
-        height: 125,
-        width: 125
+        height:  height > 700 ? 125: 115,
+        width:  height > 700 ? 125: 115
     },
     playStatNum: {
         fontSize: 50
     },
     playStatTxt: {
-        fontSize: 20
+        fontSize: height > 700 ? 20 : 18
     },
     bottomWrapper: {
         position: 'absolute',
