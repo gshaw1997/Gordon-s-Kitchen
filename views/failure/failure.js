@@ -13,9 +13,67 @@ export default class FailureScreen extends React.Component {
             penalties: this
                 .props
                 .navigation
-                .getParam('penalties', null)
+                .getParam('penalties', null),
+            failureTxt1: null,
+            failureTxt2: null,
+            failure1Done: false,
+            textAnimationDone: false
         }
     }
+
+    componentDidMount() {
+        this.startTextAnimation();
+    }
+
+    async startTextAnimation() {
+        const animationSpeed = 75;
+        const pauseSpeed = 200;
+        const txt1 = (this.state.dish.prompts.failure[0]
+            ? this.state.dish.prompts.failure[0].text
+            : `Your dish is done. Gordon smiles.`).split('');
+        let failureTxt1 = '';
+
+        const txt2 = (this.state.dish.prompts.failure[1]
+            ? this.state.dish.prompts.failure[1].text
+            : `"You've got a great future in my industry . . . as my customer."`).split('');
+        let failureTxt2 = '';
+
+        for (const char of txt1) {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    failureTxt1 += char;
+                    this.setState({failureTxt1});
+                    if (char === '.' || char === '.' || char === '!' || char === '?') {
+                        setTimeout(() => {
+                            resolve();
+                        }, pauseSpeed)
+                    } else {
+                        resolve();
+                    }
+                }, animationSpeed)
+            })
+        }
+
+        this.setState({failure1Done: true});
+
+        for (const char of txt2) {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    failureTxt2 += char;
+                    this.setState({failureTxt2});
+                    if (char === '.' || char === '.' || char === '!' || char === '?') {
+                        setTimeout(() => {
+                            resolve();
+                        }, pauseSpeed)
+                    } else {
+                        resolve();
+                    }
+                }, animationSpeed)
+            })
+        }
+        this.setState({textAnimationDone: true});
+    }
+
     render() {
         return (
             <ImageBackground
@@ -25,30 +83,30 @@ export default class FailureScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.box2}>
                         <Text style={styles.narrationText}>
-                            {this.state.dish.prompts.failure[0]
-                                ? this.state.dish.prompts.failure[0].text
-                                : `Your dish is done. Gordon smiles.`
+                            {this.state.failureTxt1
 }
                         </Text>
                         <Text style={styles.speakingText}>
-                            {this.state.dish.prompts.failure[1]
-                                ? this.state.dish.prompts.failure[1].text
-                                : `"You've got a great future in my industry . . . as my customer."`
+                            {this.state.failureTxt2
 }
                         </Text>
                     </View>
                     <View style={styles.box1}>
-                        <Image
-                            resizeMode="contain"
-                            style={styles.brokenHeart}
-                            source={this.state.dish.prompts.failure[0] && this.state.dish.prompts.failure[0].image
-                            ? {
-                                uri: this.state.dish.prompts.failure[0].image
-                            }
-                            : require('../../assets/images/broken-heart.png')}/>
+                        {this.state.failure1Done &&< Image
+                        resizeMode = "contain"
+                        style = {
+                            styles.brokenHeart
+                        }
+                        source = {
+                            this.state.dish.prompts.failure[0] && this.state.dish.prompts.failure[0].image
+                                ? {
+                                    uri: this.state.dish.prompts.failure[0].image
+                                }
+                                : require('../../assets/images/broken-heart.png')
+                        } />}
                     </View>
                     <View style={styles.box2}>
-                        <TouchableOpacity
+                        {this.state.textAnimationDone && <TouchableOpacity
                             onPress={() => this.props.navigation.navigate('RewardSummary', {
                             dish: this.state.dish,
                             penalties: this.state.penalties
@@ -58,7 +116,7 @@ export default class FailureScreen extends React.Component {
                                 resizeMode="contain"
                                 style={[styles.button, styles.nextButtonImage]}
                                 source={require('../../assets/images/next-button.png')}/>
-                        </TouchableOpacity>
+                        </TouchableOpacity>}
                     </View>
                 </View>
             </ImageBackground>
