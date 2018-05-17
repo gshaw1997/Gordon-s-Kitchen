@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiURL: 'https://gordons-kitchen-api.herokuapp.com'
+    apiURL: 'http://localhost:3000'
 }
