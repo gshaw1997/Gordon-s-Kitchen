@@ -25,8 +25,12 @@ export default class FriendsScreen extends React.Component {
             user: null,
             loaded: false
         }
-
     }
+    /**
+     * Before component renders
+     * 
+     * @memberof FriendsScreen
+     */
     async componentDidMount() {
         try {
 
@@ -62,8 +66,12 @@ export default class FriendsScreen extends React.Component {
             console.log(e)
         }
     }
-
-    async searchUsers() {
+/**
+ * Handles user searching
+ * 
+ * @memberof FriendsScreen
+ */
+async searchUsers() {
         try {
             const users = await this
                 .userService
@@ -76,8 +84,13 @@ export default class FriendsScreen extends React.Component {
             console.log(e)
         }
     }
-
-    async addFriend(playerID) {
+/**
+ * Add Friend to User's friends
+ * 
+ * @param {any} playerID 
+ * @memberof FriendsScreen
+ */
+async addFriend(playerID) {
         try {
             const friends = await this
                 .userService
@@ -89,8 +102,13 @@ export default class FriendsScreen extends React.Component {
             console.log(e);
         }
     }
-
-    async removeFriend(playerID) {
+/**
+ * Removes Friend from User's Friend
+ * 
+ * @param {any} playerID 
+ * @memberof FriendsScreen
+ */
+async removeFriend(playerID) {
         try {
             const friends = await this
                 .userService
@@ -106,8 +124,13 @@ export default class FriendsScreen extends React.Component {
     }
 
     _keyExtractor = (item, index) => `${item.id}`;
-
-    render() {
+/**
+ * Renders Screen
+ * 
+ * @returns 
+ * @memberof FriendsScreen
+ */
+render() {
         return (
                 <View style={[styles.container]}>
                     <View style={styles.searchBarWrapper}>

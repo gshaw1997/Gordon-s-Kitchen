@@ -24,8 +24,12 @@ export default class RewardSummaryScreen extends React.Component {
             loaded: false
         }
     }
-
-    async componentWillMount() {
+/**
+ * Before Screen Renders
+ * 
+ * @memberof RewardSummaryScreen
+ */
+async componentWillMount() {
         try {
             const reward = this.getReward();
             this.setState({reward})
@@ -42,8 +46,13 @@ export default class RewardSummaryScreen extends React.Component {
             console.log(e)
         }
     }
-
-    getReward() {
+/**
+ * Get  XP Reward based on penalties
+ * 
+ * @returns 
+ * @memberof RewardSummaryScreen
+ */
+getReward() {
         let xp = 0;
         for (const reward of this.state.dish.rewards) {
             if (reward.penalties === this.state.penalties) {
@@ -53,6 +62,12 @@ export default class RewardSummaryScreen extends React.Component {
         }
         return xp;
     }
+    /**
+     * Renders Screen
+     * 
+     * @returns 
+     * @memberof RewardSummaryScreen
+     */
     render() {
         return this.state.loaded
             ? (

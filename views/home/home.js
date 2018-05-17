@@ -12,6 +12,12 @@ export default class HomeScreen extends React.Component {
         }
 
     }
+
+    /**
+     * Before component
+     * 
+     * @memberof HomeScreen
+     */
     async componentDidMount() {
         try {
             const user = await this
@@ -22,7 +28,13 @@ export default class HomeScreen extends React.Component {
             console.log(e)
         }
     }
-    render() {
+/**
+ * 
+ * Renders Screen
+ * @returns 
+ * @memberof HomeScreen
+ */
+render() {
         return (
             <ImageBackground
                 resizeMode="cover"

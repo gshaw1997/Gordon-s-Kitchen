@@ -23,8 +23,12 @@ export default class ChoicesLevelScreen extends React.Component {
             reactionTxt: null
         }
     }
-
-    async componentWillMount() {
+/**
+ * Before component mounts
+ * 
+ * @memberof ChoicesLevelScreen
+ */
+async componentWillMount() {
         try {
             const user = await this
                 .authService
@@ -41,15 +45,25 @@ export default class ChoicesLevelScreen extends React.Component {
             console.log(e)
         }
     }
-
-    constructLevel(dish) {
+/**
+ * Builds Level based on data pulled from Database
+ * 
+ * @param {any} dish 
+ * @memberof ChoicesLevelScreen
+ */
+constructLevel(dish) {
         const steps = dish.steps;
         steps.sort((a, b) => a.order - b.order);
         this.setState({dish, steps});
         this.loadStep(this.state.stepNum);
     }
-
-    loadStep(number) {
+/**
+ * Loads data for next step
+ * 
+ * @param {any} number 
+ * @memberof ChoicesLevelScreen
+ */
+loadStep(number) {
         const steps = this.state.steps;
         const maxSteps = steps.length;
         const index = number - 1;
@@ -72,8 +86,14 @@ export default class ChoicesLevelScreen extends React.Component {
                 });
         }
     }
-
-    shuffle(array) {
+/**
+ * Shuffles options
+ * 
+ * @param {any} array 
+ * @returns 
+ * @memberof ChoicesLevelScreen
+ */
+shuffle(array) {
         let currentIndex = array.length,
             temporaryValue,
             randomIndex;
@@ -91,8 +111,13 @@ export default class ChoicesLevelScreen extends React.Component {
         }
         return array;
     }
-
-   async checkSelection(option) {
+/**
+ * Check to see if selection is correct
+ * 
+ * @param {any} option 
+ * @memberof ChoicesLevelScreen
+ */
+async checkSelection(option) {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions[0];
         if (option.id === correct) {
@@ -115,8 +140,13 @@ export default class ChoicesLevelScreen extends React.Component {
             }
         }
     }
-
-    toggleSelection(option) {
+/**
+ * Toggles selection
+ * 
+ * @param {any} option 
+ * @memberof ChoicesLevelScreen
+ */
+toggleSelection(option) {
         const selected = this.state.selectedOptions;
 
         if (selected.includes(option.id)) {
@@ -127,8 +157,12 @@ export default class ChoicesLevelScreen extends React.Component {
         }
         this.setState({selectedOptions: selected});
     }
-
-    async checkSelections() {
+/**
+ * Check to see if selections are correct
+ * 
+ * @memberof ChoicesLevelScreen
+ */
+async checkSelections() {
         let stepNum = this.state.stepNum;
         const correct = this.state.step.correctOptions;
         const selected = this.state.selectedOptions;
@@ -158,8 +192,14 @@ export default class ChoicesLevelScreen extends React.Component {
             }
         }
     }
-
-    toggleReaction(positive){
+/**
+ * Triggers reaction 
+ * 
+ * @param {any} positive 
+ * @returns 
+ * @memberof ChoicesLevelScreen
+ */
+toggleReaction(positive){
         let reaction;
         if(positive){
             const posReactions = this.state.dish.reactions.positive;
@@ -178,8 +218,13 @@ export default class ChoicesLevelScreen extends React.Component {
             }, 1500)
         })
     }
-
-    render() {
+/**
+ * Renders screen
+ * 
+ * @returns 
+ * @memberof ChoicesLevelScreen
+ */
+render() {
         return this.state.loaded
             ? (
                 <View style={styles.container}>

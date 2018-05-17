@@ -16,6 +16,11 @@ export default class ProfileScreen extends React.Component {
         }
 
     }
+    /**
+     * Before Component Renders
+     * 
+     * @memberof ProfileScreen
+     */
     async componentDidMount() {
         try {
             const loggedInUser = await this
@@ -49,8 +54,12 @@ export default class ProfileScreen extends React.Component {
             console.log(e)
         }
     }
-
-    calculateProgressPercent(){
+/**
+ * Calculates Progress Percentage
+ * 
+ * @memberof ProfileScreen
+ */
+calculateProgressPercent(){
         let percent = 0;
         if(this.state.user.level.nextLevel){
         const currXP = this.state.user.totalXp;
@@ -64,8 +73,13 @@ export default class ProfileScreen extends React.Component {
 
         this.setState({progressPercent: percent});
     }
-
-    render() {
+/**
+ * Renders Screen
+ * 
+ * @returns 
+ * @memberof ProfileScreen
+ */
+render() {
         if(this.state.loaded){
             const options = {
                 month: 'long',

@@ -21,6 +21,12 @@ export default class CompletionsScreen extends React.Component {
         }
 
     }
+
+    /**
+     * Before component mounts
+     * 
+     * @memberof CompletionsScreen
+     */
     async componentDidMount() {
         try {
 
@@ -44,8 +50,13 @@ export default class CompletionsScreen extends React.Component {
     }
 
     _keyExtractor = (item, index) => `${index}`;
-
-    render() {
+/**
+ * Renders Screen
+ * 
+ * @returns 
+ * @memberof CompletionsScreen
+ */
+render() {
         return (
             <View style={[styles.container]}>
                 <View style={styles.header}>

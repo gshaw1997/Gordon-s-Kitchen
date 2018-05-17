@@ -20,8 +20,12 @@ export default class DishSelectScreen extends React.Component {
             loaded: false
         }
     }
-
-    async componentWillMount() {
+/**
+ * Before Screen Renders
+ * 
+ * @memberof DishSelectScreen
+ */
+async componentWillMount() {
         try {
             const level = this.state.dishLevel;
             const dishes = await this
@@ -35,8 +39,12 @@ export default class DishSelectScreen extends React.Component {
             console.log(e);
         }
     }
-
-    async componentDidMount() {
+/**
+ * When Component Renders
+ * 
+ * @memberof DishSelectScreen
+ */
+async componentDidMount() {
         try {
             const user = await this
                 .authService

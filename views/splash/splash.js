@@ -9,6 +9,12 @@ import {
 import { styles } from './splash.styles';
 
 export default class SplahScreen extends React.Component {
+    /**
+     * Renders View
+     * 
+     * @returns 
+     * @memberof SplahScreen
+     */
     render() {
         return (
             <View

@@ -10,6 +10,12 @@ import { styles } from './end.styles';
 
 
 export default class EndScreen extends React.Component {
+    /**
+     * Renders screen
+     * 
+     * @returns 
+     * @memberof EndScreen
+     */
     render() {
         return (
             <ImageBackground

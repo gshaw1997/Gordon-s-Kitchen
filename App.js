@@ -107,9 +107,15 @@ export default class App extends React.Component {
             fontLoaded: true
         });
     }
+    /**
+     * Renders View
+     * 
+     * @returns 
+     * @memberof App
+     */
     render() {
         if (!this.state.fontLoaded)
             return null;
-        return <RootStack / > ;
+        return <RootStack/> ;
     }
 }

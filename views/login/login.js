@@ -19,8 +19,12 @@ export default class LoginScreen extends React.Component {
             errorMsg: null
         }
     }
-
-    async componentWillMount() {
+/**
+ * Before Component Renders
+ * 
+ * @memberof LoginScreen
+ */
+async componentWillMount() {
         try {
             const user = await this
                 .authService
@@ -35,8 +39,13 @@ export default class LoginScreen extends React.Component {
             console.log(e)
         }
     }
-
-    async handleLogin() {
+/**
+ * Handle submission of Login for
+ * 
+ * @returns 
+ * @memberof LoginScreen
+ */
+async handleLogin() {
         try {
             const username = this
                 .state
@@ -62,6 +71,12 @@ export default class LoginScreen extends React.Component {
             this.setState({errorMsg: e})
         }
     }
+    /**
+     * Handle submission of sign up form
+     * 
+     * @returns 
+     * @memberof LoginScreen
+     */
     async handleSignUp() {
         try {
             const username = this
@@ -88,6 +103,13 @@ export default class LoginScreen extends React.Component {
             this.setState({errorMsg: e})
         }
     }
+
+    /**
+     * Renders View
+     * 
+     * @returns 
+     * @memberof LoginScreen
+     */
     render() {
         return (
             <View style={styles.container}>

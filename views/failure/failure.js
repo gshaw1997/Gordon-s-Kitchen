@@ -20,12 +20,20 @@ export default class FailureScreen extends React.Component {
             textAnimationDone: false
         }
     }
-
-    componentDidMount() {
+/**
+ * Before screen renders
+ * 
+ * @memberof FailureScreen
+ */
+componentDidMount() {
         this.startTextAnimation();
     }
-
-    async startTextAnimation() {
+/**
+ * Start text animation
+ * 
+ * @memberof FailureScreen
+ */
+async startTextAnimation() {
         const animationSpeed = 75;
         const pauseSpeed = 200;
         const txt1 = (this.state.dish.prompts.failure[0]
@@ -73,8 +81,13 @@ export default class FailureScreen extends React.Component {
         }
         this.setState({textAnimationDone: true});
     }
-
-    render() {
+/**
+ * Renders Screen
+ * 
+ * @returns 
+ * @memberof FailureScreen
+ */
+render() {
         return (
             <ImageBackground
                 resizeMode="cover"

@@ -20,12 +20,20 @@ export default class SuccessScreen extends React.Component {
             textAnimationDone: false
         }
     }
-
-    componentDidMount() {
+/**
+ * Before screen renders
+ * 
+ * @memberof SuccessScreen
+ */
+componentDidMount() {
         this.startTextAnimation();
     }
-
-    async startTextAnimation() {
+/**
+ * Start animation of text
+ * 
+ * @memberof SuccessScreen
+ */
+async startTextAnimation() {
         const animationSpeed = 75;
         const pauseSpeed = 200;
         const txt1 = (this.state.dish.prompts.success[0]
@@ -73,8 +81,13 @@ export default class SuccessScreen extends React.Component {
         }
         this.setState({textAnimationDone: true});
     }
-
-    render() {
+/**
+ * Render View
+ * 
+ * @returns 
+ * @memberof SuccessScreen
+ */
+render() {
         return (
             <ImageBackground
                 resizeMode="cover"

@@ -21,8 +21,12 @@ export default class StartScreen extends React.Component {
             textAnimationDone: false
         }
     }
-
-    async componentWillMount() {
+/**
+ * Before screen renders
+ * 
+ * @memberof StartScreen
+ */
+async componentWillMount() {
         try {
 
             const dish = await this
@@ -38,8 +42,12 @@ export default class StartScreen extends React.Component {
             console.log(e)
         }
     }
-
-    async startTextAnimation() {
+/**
+ * Start Text Animation
+ * 
+ * @memberof StartScreen
+ */
+async startTextAnimation() {
         const animationSpeed = 75;
         const pauseSpeed = 200;
         const txt1 = (this.state.dish.prompts.intro[0]
@@ -87,8 +95,13 @@ export default class StartScreen extends React.Component {
         }
         this.setState({textAnimationDone: true});
     }
-
-    render() {
+/**
+ * Render View
+ * 
+ * @returns 
+ * @memberof StartScreen
+ */
+render() {
         return this.state.loaded
             ? (
                 <View style={styles.container}>
